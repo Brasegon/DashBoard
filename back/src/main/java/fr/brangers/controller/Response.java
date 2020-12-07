@@ -1,16 +1,19 @@
 package fr.brangers.controller;
 
+import fr.brangers.service.Data;
+import fr.brangers.service.Service;
+
 public class Response {
-    private Service service;
+    private Data data;
     private String message;
 
-    public Response(Service service, String message) {
-        this.service = service;
+    public Response(Data data, String message) {
+        this.data = data;
         this.message = message;
     }
 
-    public Service getService() {
-        return service;
+    public Data getData() {
+        return data;
     }
 
     public String getMessage() {
