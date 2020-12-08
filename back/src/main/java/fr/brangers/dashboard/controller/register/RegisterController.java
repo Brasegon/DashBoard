@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @ResponseBody
 public class RegisterController {
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(value = "/register", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<?> registerUser(@RequestBody SerializeRegister person) throws InterruptedException {
