@@ -1,6 +1,7 @@
-package fr.brangers.service;
+package fr.brangers.dashboard.service;
 
 import fr.brangers.SqlConnector;
+import fr.brangers.dashboard.message.IResponse;
 
 import java.sql.Connection;
 
@@ -11,8 +12,8 @@ public abstract class Service {
         this.connection = SqlConnector.getConnection();
     }
 
-    public String launch() {
-        return ("");
+    public IResponse launch() {
+        return (null);
     }
 
     public Connection getConnection() {

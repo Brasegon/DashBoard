@@ -1,6 +1,6 @@
 package fr.brangers.utils;
 
-import fr.brangers.controller.register.SerializeRegister;
+import fr.brangers.dashboard.controller.register.SerializeRegister;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

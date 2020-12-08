@@ -1,4 +1,4 @@
-package fr.brangers.controller.register;
+package fr.brangers.dashboard.controller.register;
 
 public class SerializeRegister {
     private String login;

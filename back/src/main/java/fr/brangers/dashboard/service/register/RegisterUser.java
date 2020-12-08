@@ -1,7 +1,6 @@
-package fr.brangers.service.register;
+package fr.brangers.dashboard.service.register;
 
-import fr.brangers.service.Data;
-import fr.brangers.service.Service;
+import fr.brangers.dashboard.service.Data;
 
 public class RegisterUser extends Data {
     private int id = 1;

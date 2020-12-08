@@ -1,8 +1,8 @@
-package fr.brangers.controller.register;
+package fr.brangers.dashboard.controller.register;
 
-import fr.brangers.controller.Response;
-import fr.brangers.service.register.RegisterService;
-import fr.brangers.service.register.RegisterUser;
+import fr.brangers.dashboard.message.DataResponse;
+import fr.brangers.dashboard.message.IResponse;
+import fr.brangers.dashboard.service.register.RegisterService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +14,8 @@ public class RegisterController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<?> registerUser(@RequestBody SerializeRegister person) throws InterruptedException {
         RegisterService registerService = new RegisterService(person);
-        registerService.launch();
-        return ResponseEntity.status(200).body("OK");
+        IResponse response = registerService.launch();
+        return ResponseEntity.status(200).body(response);
     }
 
 }
