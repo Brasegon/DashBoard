@@ -5,9 +5,9 @@ import fr.brangers.dashboard.service.Data;
 public class DataResponse implements IResponse{
     private String message;
     private String status;
-    private Data data;
+    private Object data;
 
-    public DataResponse(String message, String status, Data data) {
+    public DataResponse(String message, String status, Object data) {
         this.message = message;
         this.status = status;
         this.data = data;
@@ -21,7 +21,7 @@ public class DataResponse implements IResponse{
         return status;
     }
 
-    public Data getData() {
+    public Object getData() {
         return data;
     }
 }
