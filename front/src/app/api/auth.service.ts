@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
+
 const AUTH_API = "http://localhost:8080/";
 
 const httpOptions = {
@@ -39,6 +40,13 @@ export class AuthService {
     return this.http.post(AUTH_API + 'api/login', {
       email: credentials.email,
       password: credentials.password
+    }, httpOptions)
+  }
+
+  auth(credentials : any): Observable<any> {
+    return this.http.post(AUTH_API + 'api/authentification', {
+      token: credentials.token,
+      method: credentials.method
     }, httpOptions)
   }
 

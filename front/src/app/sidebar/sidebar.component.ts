@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { AuthService } from '../api/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,10 +9,37 @@ import Swal from 'sweetalert2';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth : AuthService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') && localStorage.getItem("type")) {
+      this.checAuth();
+    }
   }
+
+  async checAuth() {
+    var token = localStorage.getItem('token');
+    var method = localStorage.getItem('type');
+
+    try {
+      var result = await this.auth.auth({token: token, method: method}).toPromise();
+    } catch (e) {
+      localStorage.removeItem('email');
+        localStorage.removeItem('token');
+        localStorage.removeItem('type');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Your session has expired',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(function() {
+         window.location.href = "/";
+      }, 1500);
+    }
+  }
+
 
   isConnected() {
     if (localStorage.getItem('token')) {
