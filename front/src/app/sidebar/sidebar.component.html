@@ -28,9 +28,9 @@
           <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
             alt="User picture">
         </div>
+        <div *ngIf="isConnected()">
         <div class="user-info">
-          <span class="user-name">Jhon
-            <strong>Smith</strong>
+          <span class="user-name">{{getEmail()}}
           </span>
           <span class="user-status">
             <i class="fa fa-circle"></i>
@@ -38,9 +38,21 @@
           </span>
         </div>
       </div>
+      <div *ngIf="isConnected() == false">
+        <div class="user-info">
+          <span class="user-name">Anonymous
+          </span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      </div>
       <!-- sidebar-search  -->
       <div class="sidebar-menu">
         <ul>
+          <div *ngIf="isConnected()">
           <li class="header-menu">
             <span>General</span>
           </li>
@@ -151,9 +163,11 @@
               </ul>
             </div>
           </li>
+          </div>
           <li class="header-menu">
             <span>User</span>
           </li>
+          <div *ngIf="isConnected() == false">
           <li>
             <a routerLink="/login">
               <i class="fa fa-user"></i>
@@ -166,6 +180,15 @@
               <span>Register</span>
             </a>
           </li>
+          </div>
+          <div *ngIf="isConnected()" style="cursor:pointer">
+            <li>
+              <a (click)="disconnect()">
+                <i class="fa fa-user-times"></i>
+                <span>Disconnect</span>
+              </a>
+            </li>
+            </div>
         </ul>
       </div>
       <!-- sidebar-menu  -->

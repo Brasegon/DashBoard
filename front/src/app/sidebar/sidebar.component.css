@@ -177,6 +177,7 @@ body {
 
 .sidebar-wrapper .sidebar-header .user-info {
   float: left;
+  font-size: 12px;
 }
 
 .sidebar-wrapper .sidebar-header .user-info > span {

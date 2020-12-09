@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  async registerGoogle(user : any) {
+  async registerGoogle(user: any) {
       var result = await this.auth.registerGoogle({email: user.email, Oauth: "GOOGLE"}).toPromise();
       console.log(result);
       if (result.status === "error") {
@@ -56,11 +56,27 @@ export class RegisterComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  IsEmailValid(email) {
+  IsEmailValid(email: any) {
     return /\S+@\S+\.\S+/.test(email);
   }
+
+  async registerLaunch() {
+    var result = await this.auth.register({login: this.registerConnection.value.username, email: this.registerConnection.value.email, password: this.registerConnection.value.password1}).toPromise()
+    if (result.status === "error") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Username or Email already exits',
+        confirmButtonColor : '#3DB1C8',
+        confirmButtonText: 'OK !'
+      });
+    }
+    else {
+      this.success_message();
+    }
+  }
   // tslint:disable-next-line:typedef
- async btn_register(){
+    btn_register(): any{
       const login = this.registerConnection.value.username;
       const email = this.registerConnection.value.email;
       const password = this.registerConnection.value.password1;
@@ -96,19 +112,7 @@ export class RegisterComponent implements OnInit {
         });
         return false;
       }
-      var result = await this.auth.register({login: this.registerConnection.value.username, email: this.registerConnection.value.email, password: this.registerConnection.value.password1}).toPromise()
-      if (result.status === "error") {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Username or Email already exits',
-          confirmButtonColor : '#3DB1C8',
-          confirmButtonText: 'OK !'
-        });
-      }
-      else {
-        this.success_message();
-      }
+     this.registerLaunch();
 
     }
 

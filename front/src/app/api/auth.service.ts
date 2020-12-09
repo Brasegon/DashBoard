@@ -16,6 +16,12 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  loginGoogle(credentials : any): Observable<any> {
+    return this.http.post(AUTH_API + 'api/loginGoogle', {
+      email: credentials.email,
+      token: credentials.token
+    }, httpOptions)
+  }
   register(credentials : any): Observable<any> {
     return this.http.post(AUTH_API + 'api/register', {
       login: credentials.login,
@@ -30,7 +36,7 @@ export class AuthService {
     }, httpOptions)
   }
   login(credentials : any): Observable<any> {
-    return this.http.post(AUTH_API + 'login', {
+    return this.http.post(AUTH_API + 'api/login', {
       email: credentials.email,
       password: credentials.password
     }, httpOptions)
