@@ -2,7 +2,6 @@ plugins {
     id 'org.springframework.boot' version '2.4.0'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
-    id 'war'
 }
 
 group 'fr.brangers'
@@ -11,9 +10,7 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-war {
-    enabled = true
-}
+
 
 jar {
     manifest {
@@ -23,7 +20,7 @@ jar {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    //providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
     compile 'io.jsonwebtoken:jjwt-api:0.11.2'
