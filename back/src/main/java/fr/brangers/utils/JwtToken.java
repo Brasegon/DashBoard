@@ -5,6 +5,13 @@ import fr.brangers.dashboard.controller.register.SerializeRegister;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import java.util.Date;
 
 public class JwtToken {
@@ -37,4 +44,25 @@ public class JwtToken {
         return claims;
     }
 
+    public static boolean verifyTokenGoogle(String token) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://oauth2.googleapis.com/tokeninfo?id_token=" + token)
+                .queryParam("format", "json");
+
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        try {
+            HttpEntity<String> response = restTemplate.exchange(
+                    builder.build().encode().toUri(),
+                    HttpMethod.GET,
+                    entity,
+                    String.class);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 }
