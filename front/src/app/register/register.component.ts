@@ -34,7 +34,9 @@ export class RegisterComponent implements OnInit {
       this.user = user;
       console.log(user);
       this.loggedIn = (user != null);
-      this.registerGoogle(user);
+      if (this.loggedIn) {
+        this.registerGoogle(user);
+      }
     });
   }
 
@@ -49,6 +51,7 @@ export class RegisterComponent implements OnInit {
           confirmButtonColor : '#3DB1C8',
           confirmButtonText: 'OK !'
         });
+        this.authService.signOut(true);
       }
       else {
         this.success_message();

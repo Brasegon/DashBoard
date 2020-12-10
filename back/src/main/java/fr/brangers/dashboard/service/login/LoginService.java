@@ -41,7 +41,7 @@ public class LoginService extends Service {
             rs.next();
             if (rs.getRow() != 0) {
                 if (encoder.matches(person.getPassword(), rs.getString("password"))) {
-                    dataLogin = new DataLogin(JwtToken.createToken(person), person.getEmail());
+                    dataLogin = new DataLogin(JwtToken.createToken(person, rs.getInt("id")), person.getEmail());
                     return true;
                 }
                 return false;

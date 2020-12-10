@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
       this.user = user;
       console.log(user);
       this.loggedIn = (user != null);
-      this.loginGoogle(user);
+      if (this.loggedIn) {
+        this.loginGoogle(user);
+      }
     });
   }
 

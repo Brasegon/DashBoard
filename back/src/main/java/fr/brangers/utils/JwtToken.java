@@ -17,10 +17,10 @@ import java.util.Date;
 
 public class JwtToken {
 
-    public static String createToken(SLogin user) {
+    public static String createToken(SLogin user, int id) {
         return Jwts.builder()
                 .signWith(SignatureAlgorithm.HS512, "Q3LDqWVyIHVuZSBBUEkgZW4gSmF2YSBlc3QgdW4gc3VqZXQgZMOpasOgIGxhcmdlbWVudCB0cmFpdMOpLiBTaSB2b3VzIHV0aWxpc2V6IEplcnNleSBldCBzZXMgYW5ub3RhdGlvbnMsIHZvdXMgc2F2ZXogcXVlIGPigJllc3QgdHLDqHMgc2ltcGxlIGV0IHJhcGlkZSDDoCBtZXR0cmUgZW4gcGxhY2UuIERhbnMgY2V0IGFydGljbGUsIGplIHZvdWRyYWlzIHNpbXBsZW1lbnQgdm91cyBtb250cmVyIGNlIHF14oCZb24gcGV1dCBmYWlyZSBhdmVjIFZlcnQueCBlbiByZXZlbmFudCBhdXggZm9uZGFtZW50YXV4LiBFdCBlbiB2w6lyaXTDqSwgbGEgY3LDqWF0aW9uIGTigJl1bmUgQVBJIHNlcmEgYXZhbnQgdG91dCB1biBwcsOpdGV4dGUu")
-                .setClaims(buildUserClaims(user))
+                .setClaims(buildUserClaims(user, id))
                 .setIssuedAt(new Date())
                 .compact();
     }
@@ -72,9 +72,10 @@ public class JwtToken {
         return null;
     }
 
-    private static Claims buildUserClaims(SLogin user) {
+    private static Claims buildUserClaims(SLogin user, int id) {
         Claims claims = Jwts.claims();
 
+        claims.put("id", id);
         claims.put("email", user.getEmail());
         claims.put("password", user.getPassword());
 
