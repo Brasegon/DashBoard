@@ -12,4 +12,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isConnected() {
+    if (localStorage.getItem("token")) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }

@@ -1,10 +1,17 @@
 <div id="mybody" class="d-flex bd-highlight">
 <app-sidebar class="bd-highlight flex-shrink-2"></app-sidebar>
 <div class=" bd-highlight w-100">
+<div *ngIf="isConnected() == false">
 <img src="../../assets/mylogo.png">
 
 <h1>Trello Reborn</h1>
 <h2>Not better than Trello</h2>
 <a  routerLink="/register" class="btn" style="color : white;">Start Now</a>
+</div>
+
+<div *ngIf="isConnected()">
+
+<h3 style="color : white;">test connected</h3>
+</div>
 </div>
 </div>
