@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>This is a Dialog title</h2>
+
+<mat-dialog-content>
+
+    <h4>Basic mat-select</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Widget</mat-label>
+      <mat-select [(value)]="widget.type">
+        <mat-option *ngFor="let widget of widgets" [value]="widget.value">
+          {{widget.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="widget.type === 'Weather'">
+        <mat-form-field class="example-full-width">
+            <mat-label>City</mat-label>
+            <input [formControl]="weather.city" matInput placeholder="Ex. Marseille">
+          </mat-form-field>
+    </div>
+    <button (click)="addWidget()">Add widget</button>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

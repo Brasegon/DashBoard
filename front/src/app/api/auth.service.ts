@@ -49,6 +49,16 @@ export class AuthService {
       method: credentials.method
     }, httpOptions)
   }
+  addWidget(credentials : any): Observable<any> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({'Content-Type':'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*', 'x-auth-token': localStorage.getItem('token') || "", "method": localStorage.getItem('type') || ""})
+    };
+    return this.http.post(AUTH_API + 'api/service/addWidget', {
+      type: credentials.type,
+      widget: credentials.widget,
+      options: credentials.options
+    }, httpOptions1)
+  }
 
   handleError(error :any) {
     return "Salut";
