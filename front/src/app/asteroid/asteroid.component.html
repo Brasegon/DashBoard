@@ -1,0 +1,47 @@
+
+  <div class="card-container">
+    <img class="round" src="../../assets/stl.png" alt="user" />
+    <h3>Search for a Satellite</h3>
+    <p>
+      type the ID of the satellite you are looking for</p>
+
+      <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" id="search" placeholder="Try with '25544'" required>
+           <button type="submit" (click)="print_satellite()" class="searchButton" >
+             <i class="fa fa-search"></i>
+          </button>
+        </div>
+     </div>
+
+    <div class="satellite">
+    <div *ngIf= "this.isPrinted === true">
+    <h4>- Result -</h4>
+    <h5>Name : <span id="name">{{this.name}}</span></h5>
+    <h5>ID : <span id="id">{{this.id}}</span></h5>
+    <h5>OrbitType : <span id="longitude">{{this.orbitType}}</span></h5>
+    <h5>Type : <span id="longitude">{{this.type}}</span></h5>
+    <h5>Latitude : <span id="latitude">{{this.latitude}}</span></h5>
+    <h5>Longitude : <span id="longitude">{{this.longitude}}</span></h5>
+    <h5>Height(km): <span id="height">{{this.height}}</span></h5>
+    <h5>Elevation : <span id="longitude">{{this.elevation}}</span></h5>
+    <h5>Azimuth : <span id="longitude">{{this.azimuth}}</span></h5>
+    <h5>Velocity(km/s) : <span id="velocity">{{this.velocity}}</span></h5>
+    <h5>Date : <span id="date">{{this.date}}</span></h5>
+    <!-- <agm-map style="height: 300px;" [latitude]="latitude" [longitude]="longitude">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+    <google-map width="100%" style="height: 300px;">
+      <map-marker
+      *ngFor="let marker of markers"
+      [position]="marker.position"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
+    >
+    </map-marker>
+    </google-map> -->
+    </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="FileSaver.js"></script>

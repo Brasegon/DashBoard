@@ -20,6 +20,7 @@ import { AddWidgetComponent } from './widget/add-widget/add-widget.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
+import { AsteroidComponent } from './asteroid/asteroid.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import {MatInputModule} from '@angular/material/input';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    AddWidgetComponent
+    AddWidgetComponent,
+    AsteroidComponent
   ],
   imports: [
     BrowserModule,
