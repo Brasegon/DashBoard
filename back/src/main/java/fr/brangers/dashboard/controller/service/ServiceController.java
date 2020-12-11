@@ -12,6 +12,7 @@ import fr.brangers.dashboard.service.register.RegisterService;
 import fr.brangers.dashboard.service.service.ServiceList;
 import fr.brangers.dashboard.service.service.widget.AddWidgetService;
 import fr.brangers.dashboard.service.service.widget.DelWidgetService;
+import fr.brangers.dashboard.service.service.widget.GetWidgets;
 import fr.brangers.dashboard.service.service.widget.UpdateWidgetService;
 import fr.brangers.utils.JwtToken;
 import org.json.JSONObject;
@@ -74,6 +75,18 @@ public class ServiceController {
             return ResponseEntity.status(400).body(new Response("Unauthorized", "error"));
         }
         UpdateWidgetService serviceList = new UpdateWidgetService(object, widget);
+        return ResponseEntity.status(200).body(serviceList.launch());
+    }
+    @GetMapping(value = "/api/service/getWidgets", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<?> getWidgets(@RequestHeader(value = "x-auth-token", defaultValue = "") String token,
+                                          @RequestHeader(value = "method", defaultValue = "legacy") String method) {
+        JSONObject object = JwtToken.getTokenInformation(token, method);
+
+        if (object == null) {
+            return ResponseEntity.status(400).body(new Response("Unauthorized", "error"));
+        }
+        GetWidgets serviceList = new GetWidgets(object);
         return ResponseEntity.status(200).body(serviceList.launch());
     }
 }
