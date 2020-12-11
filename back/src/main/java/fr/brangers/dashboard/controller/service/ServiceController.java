@@ -50,7 +50,7 @@ public class ServiceController {
         return ResponseEntity.status(200).body(serviceList.launch());
     }
 
-    @DeleteMapping(value = "/api/service/removeWidget", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+    @PostMapping(value = "/api/service/removeWidget", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<?> delWidget(@RequestHeader(value = "x-auth-token", defaultValue = "") String token,
                                        @RequestHeader(value = "method", defaultValue = "legacy") String method,
