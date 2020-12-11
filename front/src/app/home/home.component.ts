@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../api/auth.service';
+import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DelWidgetComponent } from '../widget/del-widget/del-widget.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,7 +10,7 @@ import { AuthService } from '../api/auth.service';
 export class HomeComponent implements OnInit {
   widgetList: any;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private dialog: MatDialog) { }
   ngOnInit(): void {
     if (this.isConnected()) {
       this.getWidget();
@@ -27,7 +29,7 @@ export class HomeComponent implements OnInit {
   async getWidget() {
       var result = await this.auth.getWidget().toPromise();
       var row = [];
-      var col = []; 
+      var col = [];
       for (let i = 0; i < result.data.length; i += 1) {
         col.push(result.data[i]);
         if (i != 0 && i % 2 === 0) {
@@ -38,5 +40,10 @@ export class HomeComponent implements OnInit {
       row.push(col);
       this.widgetList = result.data;
       console.log(this.widgetList);
+  }
+
+  openModal(widget) {
+    let dialogRef = this.dialog.open(DelWidgetComponent, {data: widget});
+
   }
 }

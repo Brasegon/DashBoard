@@ -67,6 +67,15 @@ export class AuthService {
     return this.http.get(AUTH_API + 'api/service/getWidgets', httpOptions1);
   }
 
+  removeWidget(credentials : any): Observable<any> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({'Content-Type':'application/json;', 'Access-Control-Allow-Origin': '*', 'x-auth-token': localStorage.getItem('token') || "", "method": localStorage.getItem('type') || ""})
+    };
+    return this.http.post(AUTH_API + 'api/service/removeWidget', {
+      id : credentials.id
+    }, httpOptions1)
+  }
+
   handleError(error :any) {
     return "Salut";
   }

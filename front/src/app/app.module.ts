@@ -22,6 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { AsteroidComponent } from './asteroid/asteroid.component';
 import { WeatherComponent } from './weather/weather.component';
+import { DelWidgetComponent } from './widget/del-widget/del-widget.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { WeatherComponent } from './weather/weather.component';
     RegisterComponent,
     AddWidgetComponent,
     AsteroidComponent,
-    WeatherComponent
+    WeatherComponent,
+    DelWidgetComponent
   ],
   imports: [
     BrowserModule,
