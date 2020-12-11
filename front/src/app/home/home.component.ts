@@ -26,6 +26,16 @@ export class HomeComponent implements OnInit {
 
   async getWidget() {
       var result = await this.auth.getWidget().toPromise();
+      var row = [];
+      var col = []; 
+      for (let i = 0; i < result.data.length; i += 1) {
+        col.push(result.data[i]);
+        if (i != 0 && i % 2 === 0) {
+          row.push(col);
+          col = [];
+        }
+      }
+      row.push(col);
       this.widgetList = result.data;
       console.log(this.widgetList);
   }

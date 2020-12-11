@@ -2,6 +2,8 @@ package fr.brangers.utils;
 
 import fr.brangers.dashboard.controller.login.SLogin;
 import fr.brangers.dashboard.controller.register.SerializeRegister;
+import fr.brangers.dashboard.service.Service;
+import fr.brangers.dashboard.service.login.DataLogin;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,9 +15,16 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Date;
+import java.util.Map;
 
 public class JwtToken {
+
+    private static Connection connection;
 
     public static String createToken(SLogin user, int id) {
         return Jwts.builder()
@@ -64,7 +73,14 @@ public class JwtToken {
                         entity,
                         String.class);
                 System.out.println(response.getBody());
-                return new JSONObject(response.getBody());
+                Map<String, Object> google = new JSONObject(response.getBody()).toMap();
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dashboard?serverTimezone=UTC", "root", "");
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT id from users WHERE email = ?");
+                preparedStatement.setString(1, (String) google.get("email"));
+                ResultSet rs = preparedStatement.executeQuery();
+                rs.next();
+                google.put("id", rs.getInt("id"));
+                return new JSONObject(google);
             } catch (Exception e) {
                 return null;
             }

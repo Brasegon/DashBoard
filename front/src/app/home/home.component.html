@@ -1,5 +1,5 @@
 <div id="mybody" class="d-flex bd-highlight ">
-  <app-sidebar class="bd-highlight flex-shrink-2"></app-sidebar>
+  <app-sidebar class="bd-highlight flex-shrink-25"></app-sidebar>
   <div class=" bd-highlight w-100 container-fluid">
      <div *ngIf="isConnected() == false">
         <img src="../../assets/mylogo.png">
@@ -8,12 +8,12 @@
         <a  routerLink="/register" class="btn" style="color : white;">Start Now</a>
      </div>
      <div *ngIf="isConnected()">
-           <div *ngFor="let widget of this.widgetList; let index = index">
-           <div class="row" *ngIF="">
-              <app-weather class="weather col-4" *ngIf="widget.type === 'weather'" [widget]='widget'></app-weather>
+      <div class="row">
+           <div class="col-md-4" *ngFor="let widget of this.widgetList; let index = index">
+               <app-weather class="" *ngIf="widget.type === 'weather'" [widget]='widget'></app-weather>
               <app-asteroid></app-asteroid>
            </div>
-          </div>
-        </div>
+         </div>
+      </div>
      </div>
 </div>
