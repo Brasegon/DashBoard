@@ -42,8 +42,11 @@ export class HomeComponent implements OnInit {
       console.log(this.widgetList);
   }
 
-  openModal(widget) {
+  openModal(widget: any) {
     let dialogRef = this.dialog.open(DelWidgetComponent, {data: widget});
-
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.getWidget();
+    })
   }
 }
