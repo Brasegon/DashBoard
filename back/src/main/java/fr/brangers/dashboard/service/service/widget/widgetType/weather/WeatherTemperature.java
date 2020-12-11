@@ -12,8 +12,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class WeatherTemperature extends WidgetType {
     JSONObject weatherInformations = new JSONObject();
 
-    public WeatherTemperature(String type, String nameType, String options) {
-        super(type, nameType);
+    public WeatherTemperature(int id, String type, String nameType, String options) {
+        super(id, type, nameType);
         findWeatherWithOptions(options);
     }
 

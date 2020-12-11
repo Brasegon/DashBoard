@@ -39,7 +39,7 @@ public class GetWidgets extends Service {
     private void getWidgetInformation(ResultSet rs) throws SQLException {
         switch (rs.getString("widget_type")) {
             case "weather_temperature":
-                array.put(new WeatherTemperature("weather", "température", rs.getString("options")));
+                array.put(new WeatherTemperature(rs.getInt("id"), "weather", "température", rs.getString("options")));
         }
     }
 }

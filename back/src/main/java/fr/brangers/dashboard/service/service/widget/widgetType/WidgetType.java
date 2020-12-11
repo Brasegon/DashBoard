@@ -8,10 +8,12 @@ import java.util.Map;
 public abstract class WidgetType {
     protected String type;
     protected String nameType;
+    protected int id;
     protected Map<String, Object> data;
 
-    protected WidgetType(String type, String nameType) {
+    protected WidgetType(int id, String type, String nameType) {
         this.type = type;
+        this.id = id;
         this.nameType = nameType;
         this.data = new HashMap<>();
     }
@@ -26,5 +28,9 @@ public abstract class WidgetType {
 
     public Map<String, Object> getData() {
         return data;
+    }
+
+    public int getId() {
+        return id;
     }
 }
