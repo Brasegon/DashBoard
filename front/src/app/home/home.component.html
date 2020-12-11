@@ -1,6 +1,6 @@
 <div id="mybody" class="d-flex bd-highlight ">
   <app-sidebar class="bd-highlight flex-shrink-25"></app-sidebar>
-  <div class=" bd-highlight w-100 container-fluid">
+  <div id="contain" class=" bd-highlight w-100 container-fluid overflow-auto">
      <div *ngIf="isConnected() == false">
         <img src="../../assets/mylogo.png">
         <h1>Trello Reborn</h1>
@@ -9,8 +9,8 @@
      </div>
      <div *ngIf="isConnected()">
       <div class="row">
-           <div class="col-md-4" *ngFor="let widget of this.widgetList; let index = index">
-               <app-weather class="" *ngIf="widget.type === 'weather'" [widget]='widget'></app-weather>
+           <div class="col-md-4 weather" *ngFor="let widget of this.widgetList; let index = index">
+               <app-weather *ngIf="widget.type === 'weather'" [widget]='widget'></app-weather>
               <app-asteroid></app-asteroid>
            </div>
          </div>

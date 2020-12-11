@@ -58,7 +58,7 @@ img
 }
 .widget .weatherInfo .description .weatherCondition {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 100;
 }
 .widget .weatherInfo .description .place {
@@ -67,7 +67,7 @@ img
 .widget .date {
   flex: 0 0 30%;
   height: 40%;
-  background: #70C1B3;
+  background: #3E9BE1;
   border-bottom-right-radius: 20px;
   display: flex;
   justify-content: space-around;

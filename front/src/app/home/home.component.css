@@ -22,6 +22,12 @@ img
   background-image: url("../../assets/main-background.jpg");
 }
 
+#contain
+{
+  height:100vh;
+  overflow-y: scroll;
+}
+
 h1
 {
   position: relative;
@@ -63,5 +69,5 @@ a {
 
 .weather
 {
-  margin-top: 20px;
+  padding-top: 3%;
 }
