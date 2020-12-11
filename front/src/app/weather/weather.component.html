@@ -1,0 +1,14 @@
+  <!--Widget Meteo-->
+  <article class="widget">
+   <div class="weatherIcon">    <img src="{{widget.data.condition.icon}}"></div>
+    <div class="weatherInfo">
+      <div class="temperature"><span>{{widget.data.temp}}&deg;</span></div>
+      <div class="description">
+        <div class="weatherCondition">{{widget.data.condition.text}}</div>
+        <div class="place">{{widget.data.city}}, {{widget.data.country}}</div>
+      </div>
+    </div>
+    <div class="date">{{this.date}}</div>
+  </article>
+
+

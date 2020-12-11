@@ -60,6 +60,13 @@ export class AuthService {
     }, httpOptions1)
   }
 
+  getWidget(): Observable<any> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({'Content-Type':'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*', 'x-auth-token': localStorage.getItem('token') || "", "method": localStorage.getItem('type') || ""})
+    };
+    return this.http.get(AUTH_API + 'api/service/getWidgets', httpOptions1);
+  }
+
   handleError(error :any) {
     return "Salut";
   }

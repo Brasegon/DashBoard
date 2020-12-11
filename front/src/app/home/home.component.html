@@ -1,34 +1,19 @@
-<div id="mybody" class="d-flex bd-highlight">
-<app-sidebar class="bd-highlight flex-shrink-2"></app-sidebar>
-<div class=" bd-highlight w-100">
-<div *ngIf="isConnected() == false">
-<img src="../../assets/mylogo.png">
-
-<h1>Trello Reborn</h1>
-<h2>Not better than Trello</h2>
-<a  routerLink="/register" class="btn" style="color : white;">Start Now</a>
-</div>
-
-<div *ngIf="isConnected()">
-
-  <!--Widget Meteo-->
-  <article class="widget">
-    <div class="weatherIcon"><i class="wi wi-day-cloudy"></i></div>
-    <div class="weatherInfo">
-      <div class="temperature"><span>25&deg;</span></div>
-      <div class="description">
-        <div class="weatherCondition">CLOUDY</div>
-        <div class="place">New York, New York</div>
-      </div>
-    </div>
-    <div class="date">31 Jan</div>
-  </article>
-
-
-<!--Widget Satelite-->
-
-<app-asteroid></app-asteroid>
-
-</div>
-</div>
+<div id="mybody" class="d-flex bd-highlight ">
+  <app-sidebar class="bd-highlight flex-shrink-2"></app-sidebar>
+  <div class=" bd-highlight w-100 container-fluid">
+     <div *ngIf="isConnected() == false">
+        <img src="../../assets/mylogo.png">
+        <h1>Trello Reborn</h1>
+        <h2>Not better than Trello</h2>
+        <a  routerLink="/register" class="btn" style="color : white;">Start Now</a>
+     </div>
+     <div *ngIf="isConnected()">
+           <div *ngFor="let widget of this.widgetList; let index = index">
+           <div class="row" *ngIF="">
+              <app-weather class="weather col-4" *ngIf="widget.type === 'weather'" [widget]='widget'></app-weather>
+              <app-asteroid></app-asteroid>
+           </div>
+          </div>
+        </div>
+     </div>
 </div>

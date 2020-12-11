@@ -19,14 +19,14 @@ export class AddWidgetComponent implements OnInit {
   weather = {
     city: new FormControl('')
   }
-  
+
   widgets =  [
     {value: 'Weather'},
     {value: 'test'}
   ];
 
   ngOnInit(): void {
-  
+
   }
   close() {
 
@@ -34,6 +34,7 @@ export class AddWidgetComponent implements OnInit {
 
   addWidget() {
     if (this.widget.type === "Weather") {
+      this.widget.widget = "weather_temperature";
       var options = {
         city: this.weather.city.value
       }
