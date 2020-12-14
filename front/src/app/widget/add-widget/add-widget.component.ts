@@ -2,6 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/api/auth.service';
+
+
+interface Widget {
+  value: string;
+}
+
+interface WidgetGroup {
+  disabled?: boolean;
+  name: string;
+  widget: Widget[];
+}
 @Component({
   selector: 'app-add-widget',
   templateUrl: './add-widget.component.html',
@@ -10,6 +21,8 @@ import { AuthService } from 'src/app/api/auth.service';
 export class AddWidgetComponent implements OnInit {
 
   constructor(private auth : AuthService, public dialogRef: MatDialogRef<AddWidgetComponent>) { }
+  
+  
   widgetSelected = 'Weather'
   refreshTime = 5;
   widget = {
@@ -23,6 +36,20 @@ export class AddWidgetComponent implements OnInit {
   }
 
   epitech_user = new FormControl('');
+
+  widgetGroup: WidgetGroup[] = [
+    {
+      name: "Weather Service",
+      widget: [
+        {value: 'Weather'}
+      ]
+    }, {
+      name: "Epitech Service",
+      widget: [
+        {value: 'EpitechProfil'}
+      ]
+    }
+  ]
 
   widgets =  [
     {value: 'Weather'},
