@@ -23,6 +23,7 @@ import {MatInputModule} from '@angular/material/input';
 import { AsteroidComponent } from './asteroid/asteroid.component';
 import { WeatherComponent } from './weather/weather.component';
 import { DelWidgetComponent } from './widget/del-widget/del-widget.component';
+import { EpitechProfilComponent } from './epitech-profil/epitech-profil.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { DelWidgetComponent } from './widget/del-widget/del-widget.component';
     AddWidgetComponent,
     AsteroidComponent,
     WeatherComponent,
-    DelWidgetComponent
+    DelWidgetComponent,
+    EpitechProfilComponent
   ],
   imports: [
     BrowserModule,

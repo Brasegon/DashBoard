@@ -34,7 +34,7 @@ export class AddWidgetComponent implements OnInit {
   async addWidget() {
     if (this.widget.type === "Weather") {
       this.widget.widget = "weather_temperature";
-      var options = {
+      var options: any = {
         city: this.weather.city.value
       }
       this.widget.options = JSON.stringify(options);
@@ -44,7 +44,7 @@ export class AddWidgetComponent implements OnInit {
 
     if (this.widget.type === "EpitechProfil") {
       this.widget.widget = "epitech_user";
-      var options = {
+      var options: any = {
         auth: this.epitech_user.value
       }
       this.widget.options = JSON.stringify(options);

@@ -11,6 +11,7 @@
       <div class="row">
            <div class="col-md-4 weather" *ngFor="let widget of this.widgetList; let index = index">
                <app-weather *ngIf="widget.type === 'weather'" [widget]='widget'></app-weather>
+               <app-epitech-profil *ngIf="widget.nameType === 'epitech_user'" [widget]='widget'></app-epitech-profil>
               <app-asteroid></app-asteroid>
            </div>
          </div>
