@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>This is a Dialog title</h2>
+<h2 mat-dialog-title>Add a Widget</h2>
 
 <mat-dialog-content>
 
@@ -17,10 +17,15 @@
             <input [formControl]="weather.city" matInput placeholder="Ex. Marseille">
           </mat-form-field>
     </div>
+    <div *ngIf="widget.type === 'EpitechProfil'">
+      <mat-form-field class="example-full-width">
+          <mat-label>Epitech Autologin</mat-label>
+          <input [formControl]="epitech_user" matInput placeholder="Ex. auth-xxx">
+        </mat-form-field>
+  </div>
     <button (click)="addWidget()">Add widget</button>
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Close</button>
 </mat-dialog-actions>

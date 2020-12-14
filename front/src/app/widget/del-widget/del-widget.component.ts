@@ -16,6 +16,7 @@ export class DelWidgetComponent implements OnInit {
   }
 
   async removeWidget() {
+
     let result = await this.auth.removeWidget({id: this.data.id}).toPromise();
     this.dialogRef.close(result);
   }

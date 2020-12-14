@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../api/auth.service';
 import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DelWidgetComponent } from '../widget/del-widget/del-widget.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -42,11 +42,4 @@ export class HomeComponent implements OnInit {
       console.log(this.widgetList);
   }
 
-  openModal(widget: any) {
-    let dialogRef = this.dialog.open(DelWidgetComponent, {data: widget});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.getWidget();
-    })
-  }
 }

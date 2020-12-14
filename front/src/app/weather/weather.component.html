@@ -1,5 +1,9 @@
   <!--Widget Meteo-->
   <article class="widget">
+    <div (click)="openModal(widget)" class="close-container" >
+      <div class="leftright"></div>
+      <div class="rightleft"></div>
+    </div>
    <div class="weatherIcon">    <img src="{{widget.data.condition.icon}}"></div>
     <div class="weatherInfo">
       <div class="temperature"><span>{{widget.data.temp}}&deg;</span></div>

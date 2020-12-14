@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from '../api/auth.service';
 import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddWidgetComponent } from '../widget/add-widget/add-widget.component';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,7 @@ import { AddWidgetComponent } from '../widget/add-widget/add-widget.component';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private auth : AuthService, public dialog: MatDialog) { }
+  constructor(private auth : AuthService, public dialog: MatDialog, private home: HomeComponent) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('token') && localStorage.getItem("type")) {
@@ -57,7 +58,11 @@ export class SidebarComponent implements OnInit {
   }
 
   openAddwidget() {
-    this.dialog.open(AddWidgetComponent);
+    let dialogRef = this.dialog.open(AddWidgetComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.home.getWidget();
+    })
   }
 
   disconnect()
