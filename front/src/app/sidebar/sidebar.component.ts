@@ -58,7 +58,7 @@ export class SidebarComponent implements OnInit {
   }
 
   openAddwidget() {
-    let dialogRef = this.dialog.open(AddWidgetComponent);
+    let dialogRef = this.dialog.open(AddWidgetComponent, {panelClass: 'mybody'});
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       this.home.getWidget();

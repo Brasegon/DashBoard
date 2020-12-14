@@ -1,29 +1,28 @@
-<h2 mat-dialog-title>Add a Widget</h2>
+<h1 mat-dialog-title style="color : white">Add a Widget</h1>
 
 <mat-dialog-content>
 
-    <h4>Basic mat-select</h4>
     <mat-form-field appearance="fill">
-      <mat-label>Widget</mat-label>
-      <mat-select [(value)]="widget.type">
-        <mat-option *ngFor="let widget of widgets" [value]="widget.value">
+      <mat-label style="color : white">Widget</mat-label>
+      <mat-select [(value)]="widget.type" >
+        <mat-option *ngFor="let widget of widgets" [value]="widget.value" >
           {{widget.value}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <div *ngIf="widget.type === 'Weather'">
+    <div *ngIf="widget.type === 'Weather'" >
         <mat-form-field class="example-full-width">
-            <mat-label>City</mat-label>
+            <mat-label style="color : white">City</mat-label>
             <input [formControl]="weather.city" matInput placeholder="Ex. Marseille">
           </mat-form-field>
     </div>
-    <div *ngIf="widget.type === 'EpitechProfil'">
-      <mat-form-field class="example-full-width">
-          <mat-label>Epitech Autologin</mat-label>
+    <div *ngIf="widget.type === 'EpitechProfil'" >
+      <mat-form-field class="example-full-width" >
+          <mat-label style="color : white">Epitech Autologin</mat-label>
           <input [formControl]="epitech_user" matInput placeholder="Ex. auth-xxx">
         </mat-form-field>
-  </div>
-    <button (click)="addWidget()">Add widget</button>
+  </div><br>
+  <a (click)="addWidget()" style="cursor: pointer; color: white">Submit</a>
 
 </mat-dialog-content>
 

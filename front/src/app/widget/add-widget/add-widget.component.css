@@ -1,0 +1,60 @@
+a {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #3DB1C8;
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-block;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  padding: 0.5em 2em;
+  border: 2px solid #3DB1C8;
+  -webkit-transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+  transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+  margin-top: 20px;
+}
+a::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: #3DB1C8;
+  -webkit-transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+  transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+  z-index: -1;
+}
+a::after {
+  content: "";
+  display: inline-block;
+  background-image: url("https://image.flaticon.com/icons/png/128/109/109617.png");
+  position: absolute;
+  top: 0;
+  left: calc(100% - 3em);
+  right: 3em;
+  bottom: 0;
+  background-size: 1.5em;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+  transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+}
+a:hover {
+  padding: 0.5em 3.5em 0.5em 0.5em;
+}
+a:hover::before {
+  left: calc(100% - 3em);
+  right: 0;
+  -webkit-transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+  transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+a:hover::after {
+  right: 0;
+  -webkit-transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+  transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
