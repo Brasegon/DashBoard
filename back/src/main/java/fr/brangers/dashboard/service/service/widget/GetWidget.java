@@ -2,9 +2,8 @@ package fr.brangers.dashboard.service.service.widget;
 
 import fr.brangers.dashboard.message.DataResponse;
 import fr.brangers.dashboard.message.IResponse;
-import fr.brangers.dashboard.message.Response;
-import fr.brangers.dashboard.service.Data;
 import fr.brangers.dashboard.service.Service;
+import fr.brangers.dashboard.service.service.widget.widgetType.WidgetType;
 import fr.brangers.dashboard.service.service.widget.widgetType.epitech.Epitech;
 import fr.brangers.dashboard.service.service.widget.widgetType.weather.WeatherTemperature;
 import org.json.JSONArray;
@@ -14,19 +13,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GetWidgets extends Service {
+public class GetWidget extends Service {
 
     private final JSONObject token;
-    private final JSONArray array = new JSONArray();
-    public GetWidgets(JSONObject token) {
+    private WidgetType widget;
+    private int id;
+
+    public GetWidget(JSONObject token, int id) {
         this.token = token;
+        this.id = id;
     }
 
     @Override
     public IResponse launch() {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from widget WHERE user_id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from widget WHERE user_id = ? AND id = ?");
             preparedStatement.setInt(1, token.getInt("id"));
+            preparedStatement.setInt(2, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 getWidgetInformation(rs);
@@ -34,16 +37,16 @@ public class GetWidgets extends Service {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return new DataResponse("List of widget", "success", array.toList());
+        return new DataResponse("List of widget", "success", widget);
     }
 
     private void getWidgetInformation(ResultSet rs) throws SQLException {
         switch (rs.getString("widget_type")) {
             case "weather_temperature":
-                array.put(new WeatherTemperature(rs.getInt("id"), "weather", "température", rs.getString("options"), rs.getInt("refreshTime")));
+                widget = new WeatherTemperature(rs.getInt("id"), "weather", "température", rs.getString("options"), rs.getInt("refreshTime"));
                 break;
             case "epitech_user":
-                array.put(new Epitech(rs.getInt("id"), "epitech", "epitech_user", rs.getString("options"), rs.getInt("refreshTime")));
+                widget = new Epitech(rs.getInt("id"), "epitech", "epitech_user", rs.getString("options"), rs.getInt("refreshTime"));
         }
     }
 }

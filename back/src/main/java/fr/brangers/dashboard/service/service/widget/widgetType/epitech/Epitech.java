@@ -13,8 +13,8 @@ public class Epitech extends WidgetType {
 
     JSONObject epitechInformations = new JSONObject();
 
-    public Epitech(int id, String type, String nameType, String options) {
-        super(id, type, nameType);
+    public Epitech(int id, String type, String nameType, String options, int refreshTime) {
+        super(id, type, nameType, refreshTime);
         findEpitechInformations(options);
     }
 

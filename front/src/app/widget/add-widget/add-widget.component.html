@@ -21,8 +21,13 @@
           <mat-label style="color : white">Epitech Autologin</mat-label>
           <input [formControl]="epitech_user" matInput placeholder="Ex. auth-xxx">
         </mat-form-field>
-  </div><br>
+
+  </div>
+  <div>
+    <mat-slider min="5" max="60" step="1" value="5" (change)="changeRefreshTime($event)" [thumbLabel]="refreshTime"></mat-slider>
+  </div>
   <a (click)="addWidget()" style="cursor: pointer; color: white">Submit</a>
+
 
 </mat-dialog-content>
 

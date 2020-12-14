@@ -10,10 +10,7 @@ import fr.brangers.dashboard.message.Response;
 import fr.brangers.dashboard.service.Data;
 import fr.brangers.dashboard.service.register.RegisterService;
 import fr.brangers.dashboard.service.service.ServiceList;
-import fr.brangers.dashboard.service.service.widget.AddWidgetService;
-import fr.brangers.dashboard.service.service.widget.DelWidgetService;
-import fr.brangers.dashboard.service.service.widget.GetWidgets;
-import fr.brangers.dashboard.service.service.widget.UpdateWidgetService;
+import fr.brangers.dashboard.service.service.widget.*;
 import fr.brangers.utils.JwtToken;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
@@ -87,6 +84,19 @@ public class ServiceController {
             return ResponseEntity.status(400).body(new Response("Unauthorized", "error"));
         }
         GetWidgets serviceList = new GetWidgets(object);
+        return ResponseEntity.status(200).body(serviceList.launch());
+    }
+    @GetMapping(value = "/api/service/getWidget", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<?> getWidget(@RequestHeader(value = "x-auth-token", defaultValue = "") String token,
+                                        @RequestHeader(value = "method", defaultValue = "legacy") String method,
+                                       @RequestParam int id) {
+        JSONObject object = JwtToken.getTokenInformation(token, method);
+        System.out.println(id);
+        if (object == null) {
+            return ResponseEntity.status(400).body(new Response("Unauthorized", "error"));
+        }
+        GetWidget serviceList = new GetWidget(object, id);
         return ResponseEntity.status(200).body(serviceList.launch());
     }
 }

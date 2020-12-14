@@ -22,11 +22,12 @@ public class AddWidgetService extends Service {
     @Override
     public IResponse launch() {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO widget(type, widget_type, options, user_id) VALUES(?, ?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO widget(type, widget_type, options, user_id, refreshTime) VALUES(?, ?, ?, ?, ?)");
             preparedStatement.setString(1, widget.getType());
             preparedStatement.setString(2, widget.getWidget());
             preparedStatement.setString(3, widget.getOptions());
             preparedStatement.setInt(4, json.getInt("id"));
+            preparedStatement.setInt(5, widget.getRefreshTime());
             preparedStatement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -24,6 +24,7 @@ import { AsteroidComponent } from './asteroid/asteroid.component';
 import { WeatherComponent } from './weather/weather.component';
 import { DelWidgetComponent } from './widget/del-widget/del-widget.component';
 import { EpitechProfilComponent } from './epitech-profil/epitech-profil.component';
+import {MatSliderModule} from '@angular/material/slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { EpitechProfilComponent } from './epitech-profil/epitech-profil.componen
     BrowserAnimationsModule,
     MatDialogModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatSliderModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

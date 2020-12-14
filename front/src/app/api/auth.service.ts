@@ -53,11 +53,7 @@ export class AuthService {
     const httpOptions1 = {
       headers: new HttpHeaders({'Content-Type':'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*', 'x-auth-token': localStorage.getItem('token') || "", "method": localStorage.getItem('type') || ""})
     };
-    return this.http.post(AUTH_API + 'api/service/addWidget', {
-      type: credentials.type,
-      widget: credentials.widget,
-      options: credentials.options
-    }, httpOptions1)
+    return this.http.post(AUTH_API + 'api/service/addWidget', credentials, httpOptions1)
   }
 
   getWidget(): Observable<any> {
@@ -65,6 +61,13 @@ export class AuthService {
       headers: new HttpHeaders({'Content-Type':'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*', 'x-auth-token': localStorage.getItem('token') || "", "method": localStorage.getItem('type') || ""})
     };
     return this.http.get(AUTH_API + 'api/service/getWidgets', httpOptions1);
+  }
+
+  getWidgetSpecific(id: any): Observable<any> {
+    const httpOptions1 = {
+      headers: new HttpHeaders({'Content-Type':'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*', 'x-auth-token': localStorage.getItem('token') || "", "method": localStorage.getItem('type') || ""})
+    };
+    return this.http.get(AUTH_API + 'api/service/getWidget?id=' + id, httpOptions1);
   }
 
   removeWidget(credentials : any): Observable<any> {

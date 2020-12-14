@@ -11,9 +11,11 @@ export class AddWidgetComponent implements OnInit {
 
   constructor(private auth : AuthService, public dialogRef: MatDialogRef<AddWidgetComponent>) { }
   widgetSelected = 'Weather'
+  refreshTime = 5;
   widget = {
     type : "",
     widget: "",
+    refreshTime: 5,
     options: "",
   }
   weather = {
@@ -31,12 +33,18 @@ export class AddWidgetComponent implements OnInit {
 
   }
 
+  changeRefreshTime(event) {
+    console.log(event.value);
+    this.refreshTime = event.value;
+  }
+
   async addWidget() {
     if (this.widget.type === "Weather") {
       this.widget.widget = "weather_temperature";
       var options: any = {
         city: this.weather.city.value
       }
+      this.widget.refreshTime = this.refreshTime;
       this.widget.options = JSON.stringify(options);
       var result = await this.auth.addWidget(this.widget).toPromise();
       this.dialogRef.close(result);
@@ -48,6 +56,7 @@ export class AddWidgetComponent implements OnInit {
         auth: this.epitech_user.value
       }
       this.widget.options = JSON.stringify(options);
+      this.widget.refreshTime = this.refreshTime;
       var result = await this.auth.addWidget(this.widget).toPromise();
       this.dialogRef.close(result);
     }
