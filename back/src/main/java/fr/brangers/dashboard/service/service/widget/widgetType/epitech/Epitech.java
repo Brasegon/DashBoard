@@ -44,6 +44,8 @@ public class Epitech extends WidgetType {
             epitechInformations.put("credits", inf.get("credits"));
             epitechInformations.put("school_title", inf.get("school_title"));
             epitechInformations.put("gpa", inf.get("gpa"));
+            epitechInformations.put("internal_email", inf.get("internal_email"));
+            epitechInformations.put("picture", "https://intra.epitech.eu/" + auth + inf.get("picture"));
             this.data = epitechInformations.toMap();
         } catch (Exception e) {
             epitechInformations.put("name", "undefined");
@@ -51,6 +53,8 @@ public class Epitech extends WidgetType {
             epitechInformations.put("credits", "0");
             epitechInformations.put("school_title", "0");
             epitechInformations.put("gpa", "0");
+            epitechInformations.put("internal_email", "0");
+            epitechInformations.put("picture", "null");
             this.data = epitechInformations.toMap();
         }
     }
