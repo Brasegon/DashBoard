@@ -5,6 +5,7 @@ import fr.brangers.dashboard.message.IResponse;
 import fr.brangers.dashboard.message.Response;
 import fr.brangers.dashboard.service.Data;
 import fr.brangers.dashboard.service.Service;
+import fr.brangers.dashboard.service.service.widget.widgetType.epitech.Epitech;
 import fr.brangers.dashboard.service.service.widget.widgetType.weather.WeatherTemperature;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -40,6 +41,9 @@ public class GetWidgets extends Service {
         switch (rs.getString("widget_type")) {
             case "weather_temperature":
                 array.put(new WeatherTemperature(rs.getInt("id"), "weather", "température", rs.getString("options")));
+                break;
+            case "epitech_user":
+                array.put(new Epitech(rs.getInt("id"), "epitech", "epitech_user", rs.getString("options")));
         }
     }
 }
