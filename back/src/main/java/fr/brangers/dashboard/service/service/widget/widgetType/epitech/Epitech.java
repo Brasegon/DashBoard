@@ -42,11 +42,15 @@ public class Epitech extends WidgetType {
             epitechInformations.put("name", inf.get("title"));
             epitechInformations.put("promo", inf.get("promo"));
             epitechInformations.put("credits", inf.get("credits"));
+            epitechInformations.put("school_title", inf.get("school_title"));
+            epitechInformations.put("gpa", inf.get("gpa"));
             this.data = epitechInformations.toMap();
         } catch (Exception e) {
             epitechInformations.put("name", "undefined");
             epitechInformations.put("promo", "undefined");
             epitechInformations.put("credits", "0");
+            epitechInformations.put("school_title", "0");
+            epitechInformations.put("gpa", "0");
             this.data = epitechInformations.toMap();
         }
     }
