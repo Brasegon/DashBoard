@@ -26,6 +26,7 @@ import { DelWidgetComponent } from './widget/del-widget/del-widget.component';
 import { EpitechProfilComponent } from './epitech-profil/epitech-profil.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { MsalModule } from '@azure/msal-angular';
+import { OutlookComponent } from './outlook/outlook.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { MsalModule } from '@azure/msal-angular';
     AsteroidComponent,
     WeatherComponent,
     DelWidgetComponent,
-    EpitechProfilComponent
+    EpitechProfilComponent,
+    OutlookComponent
   ],
   imports: [
     BrowserModule,

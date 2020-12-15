@@ -1,0 +1,21 @@
+<div id="content">
+  <ul class="timeline">
+    <div (click)="openModal(widget)" class="close-container" >
+      <div class="leftright"></div>
+      <div class="rightleft"></div>
+    </div>
+    <div class="title">My mails</div>
+
+    <li *ngFor="let i of widget.data.value" class="event" [attr.data-date] = "getTime(i)">
+      <div class="member-infos">
+        <h1 class='member-title'><span style="color : #3DB1C8" >From</span> : {{i.from.emailAddress.name}} <br> <span style="color : #3DB1C8" >Subject</span> : {{i.subject}}</h1>
+
+        <ul class="member-contact">
+          <li class="member-hire"><a class="entypo-mail" target="_blank" href="mailto://barney@barneyparker.com"></a></li>
+        </ul>
+
+
+      </div>
+    </li>
+  </ul>
+</div>
