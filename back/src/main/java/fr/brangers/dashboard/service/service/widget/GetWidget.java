@@ -5,6 +5,7 @@ import fr.brangers.dashboard.message.IResponse;
 import fr.brangers.dashboard.service.Service;
 import fr.brangers.dashboard.service.service.widget.widgetType.WidgetType;
 import fr.brangers.dashboard.service.service.widget.widgetType.epitech.Epitech;
+import fr.brangers.dashboard.service.service.widget.widgetType.microsoft.Outlook;
 import fr.brangers.dashboard.service.service.widget.widgetType.weather.WeatherTemperature;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,6 +48,8 @@ public class GetWidget extends Service {
                 break;
             case "epitech_user":
                 widget = new Epitech(rs.getInt("id"), "epitech", "epitech_user", rs.getString("options"), rs.getInt("refreshTime"));
+            case "outlook":
+                widget = new Outlook(rs.getInt("id"), "microsoft", "outlook", rs.getString("options"), rs.getInt("refreshTime"));
         }
     }
 }
