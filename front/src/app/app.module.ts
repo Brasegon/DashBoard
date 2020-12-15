@@ -25,6 +25,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { DelWidgetComponent } from './widget/del-widget/del-widget.component';
 import { EpitechProfilComponent } from './epitech-profil/epitech-profil.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { MsalModule } from '@azure/msal-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,19 @@ import {MatSliderModule} from '@angular/material/slider';
     MatDialogModule,
     MatSelectModule,
     MatInputModule,
-    MatSliderModule
+    MatSliderModule,
+    MsalModule.forRoot({
+      auth: {
+          clientId: "ec366bf3-2d84-4e3e-87e0-336e87df55d3",
+          authority: "https://login.microsoftonline.com/organizations/",
+          redirectUri: "http://localhost:4200"
+      }
+  }, {
+      protectedResourceMap: [
+          ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ],
+      popUp: true,
+  })
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

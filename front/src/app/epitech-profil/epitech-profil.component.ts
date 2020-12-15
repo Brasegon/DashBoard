@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DelWidgetComponent } from '../widget/del-widget/del-widget.component';
 import { HomeComponent } from '../home/home.component';
 import { AuthService } from '../api/auth.service';
+import { MsalService, BroadcastService  } from '@azure/msal-angular';
 
 @Component({
   selector: 'app-epitech-profil',
@@ -11,7 +12,7 @@ import { AuthService } from '../api/auth.service';
 })
 export class EpitechProfilComponent implements OnInit {
   @Input() widget: any;
-  constructor(private auth: AuthService, private dialog: MatDialog,  private home: HomeComponent) { }
+  constructor(private auth: AuthService, private dialog: MatDialog,  private home: HomeComponent, private authService: MsalService, private broadcastService: BroadcastService) { }
 
   ngOnInit(): void {
     var vm = this;
@@ -29,6 +30,12 @@ export class EpitechProfilComponent implements OnInit {
   }
 
   openModal(widget: any) {
+
+  /*this.authService.loginPopup({
+    extraScopesToConsent: ["user.read", "openid", "profile"]
+  });*/
+  
+  
     let dialogRef = this.dialog.open(DelWidgetComponent, {data: widget, panelClass: 'mybody'});
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/api/auth.service';
+import { BroadcastService, MsalService } from '@azure/msal-angular';
 
 
 interface Widget {
@@ -20,7 +21,7 @@ interface WidgetGroup {
 })
 export class AddWidgetComponent implements OnInit {
 
-  constructor(private auth : AuthService, public dialogRef: MatDialogRef<AddWidgetComponent>) { }
+  constructor(private auth : AuthService, public dialogRef: MatDialogRef<AddWidgetComponent>, private authService: MsalService, private broadcastService: BroadcastService) { }
   
   
   widgetSelected = 'Weather'
@@ -48,6 +49,11 @@ export class AddWidgetComponent implements OnInit {
       widget: [
         {value: 'EpitechProfil'}
       ]
+    }, {
+      name: "Microsoft Service",
+      widget: [
+        {value: "Outlook"}
+      ]
     }
   ]
 
@@ -55,6 +61,8 @@ export class AddWidgetComponent implements OnInit {
     {value: 'Weather'},
     {value: 'EpitechProfil'}
   ];
+
+  microsoftToken = "";
 
   ngOnInit(): void {
 
@@ -87,5 +95,29 @@ export class AddWidgetComponent implements OnInit {
       var result = await this.auth.addWidget(this.widget).toPromise();
       this.dialogRef.close(result);
     }
+
+    if (this.widget.type === "Outlook") {
+      this.widget.widget = "outlook";
+      var options: any = {
+        auth: this.microsoftToken
+      }
+      this.widget.options = JSON.stringify(options);
+      this.widget.refreshTime = this.refreshTime;
+      var result = await this.auth.addWidget(this.widget).toPromise();
+      this.dialogRef.close(result);
+    }
+  }
+  connectMicrosoft(): any {
+    const requestObj = {
+      scopes: ["user.read"]
+    };
+    var vm = this;
+    this.authService.loginPopup({
+      extraScopesToConsent: ["user.read", "openid", "profile"]
+    }).then(function () {
+      vm.authService.acquireTokenPopup(requestObj).then(function (tokenResponse) {
+        vm.microsoftToken = tokenResponse.accessToken;
+      });
+    });
   }
 }

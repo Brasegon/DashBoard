@@ -25,6 +25,9 @@
         </mat-form-field>
 
   </div>
+  <div *ngIf="widget.type === 'Outlook'" >
+    <button (click)="connectMicrosoft()">Connect to microsoft</button>
+</div>
   <div>
     <mat-slider min="5" max="60" step="1" value="5" (change)="changeRefreshTime($event)" [thumbLabel]="refreshTime"></mat-slider>
   </div>

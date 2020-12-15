@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
   loginInWithGoogle(): any
   {
     let isCalled = false;
+
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
