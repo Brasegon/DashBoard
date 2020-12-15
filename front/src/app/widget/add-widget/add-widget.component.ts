@@ -22,8 +22,8 @@ interface WidgetGroup {
 export class AddWidgetComponent implements OnInit {
 
   constructor(private auth : AuthService, public dialogRef: MatDialogRef<AddWidgetComponent>, private authService: MsalService, private broadcastService: BroadcastService) { }
-  
-  
+
+
   widgetSelected = 'Weather'
   refreshTime = 5;
   widget = {
@@ -118,6 +118,7 @@ export class AddWidgetComponent implements OnInit {
       vm.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
         console.log(tokenResponse)
         vm.microsoftToken = tokenResponse.accessToken;
+        console.log(tokenResponse);
       });
     });
   }
