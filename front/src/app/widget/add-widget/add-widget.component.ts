@@ -113,7 +113,7 @@ export class AddWidgetComponent implements OnInit {
     };
     var vm = this;
     this.authService.loginPopup({
-      extraScopesToConsent: ["user.read", "openid", "profile", "Mail.Read"]
+      scopes: ["user.read", "openid", "profile", "Mail.Read"]
     }).then(function () {
       vm.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
         console.log(tokenResponse)
