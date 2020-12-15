@@ -115,7 +115,7 @@ export class AddWidgetComponent implements OnInit {
     this.authService.loginPopup({
       extraScopesToConsent: ["user.read", "openid", "profile", "Mail.Read"]
     }).then(function () {
-      vm.authService.acquireTokenPopup(requestObj).then(function (tokenResponse) {
+      vm.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
         console.log(tokenResponse)
         vm.microsoftToken = tokenResponse.accessToken;
       });
