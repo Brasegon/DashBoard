@@ -109,13 +109,14 @@ export class AddWidgetComponent implements OnInit {
   }
   connectMicrosoft(): any {
     const requestObj = {
-      scopes: ["user.read"]
+      scopes: ["user.read", "Mail.Read"]
     };
     var vm = this;
     this.authService.loginPopup({
-      extraScopesToConsent: ["user.read", "openid", "profile"]
+      extraScopesToConsent: ["user.read", "openid", "profile", "Mail.Read"]
     }).then(function () {
       vm.authService.acquireTokenPopup(requestObj).then(function (tokenResponse) {
+        console.log(tokenResponse)
         vm.microsoftToken = tokenResponse.accessToken;
       });
     });

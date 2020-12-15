@@ -54,13 +54,13 @@ import { MsalModule } from '@azure/msal-angular';
     MatSliderModule,
     MsalModule.forRoot({
       auth: {
-          clientId: "ec366bf3-2d84-4e3e-87e0-336e87df55d3",
-          authority: "https://login.microsoftonline.com/organizations/",
+          clientId: "0861f80f-da9a-45b7-9541-d7891117bf61",
+          authority: "https://login.microsoftonline.com/common/",
           redirectUri: "http://localhost:4200"
       }
   }, {
       protectedResourceMap: [
-          ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+          ['https://graph.microsoft.com/v1.0/me', ['user.read', 'Mail.Read']]
       ],
       popUp: true,
   })
