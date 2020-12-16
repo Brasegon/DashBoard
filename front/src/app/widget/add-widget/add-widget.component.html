@@ -25,6 +25,14 @@
         </mat-form-field>
 
   </div>
+
+  <div *ngIf="widget.type === 'Minecraft'" >
+    <mat-form-field class="example-full-width" >
+        <mat-label style="color : white">Ip server</mat-label>
+        <input [formControl]="minecraft_server" matInput placeholder="Ex. 127.0.0.1">
+      </mat-form-field>
+
+</div>
   <div *ngIf="widget.type === 'Outlook'" >
     <button (click)="connectMicrosoft()">Connect to microsoft</button>
 </div>

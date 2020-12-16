@@ -36,6 +36,9 @@ export class AddWidgetComponent implements OnInit {
 
   epitech_user = new FormControl('');
 
+  minecraft_server = new FormControl('');
+
+
   widgetGroup: WidgetGroup[] = [
     {
       name: "Weather Service",
@@ -52,13 +55,14 @@ export class AddWidgetComponent implements OnInit {
       widget: [
         {value: "Outlook"}
       ]
+    },
+    {
+      name: "Minecraft Service",
+      widget: [
+        {value: "Minecraft"}
+      ]
     }
   ]
-
-  widgets =  [
-    {value: 'Weather'},
-    {value: 'EpitechProfil'}
-  ];
 
   microsoftToken = "";
 
@@ -76,6 +80,17 @@ export class AddWidgetComponent implements OnInit {
       this.widget.widget = "weather_temperature";
       var options: any = {
         city: this.weather.city.value
+      }
+      this.widget.refreshTime = this.refreshTime;
+      this.widget.options = JSON.stringify(options);
+      var result = await this.auth.addWidget(this.widget).toPromise();
+      this.dialogRef.close(result);
+    }
+
+    if (this.widget.type === "Minecraft") {
+      this.widget.widget = "minecraft_server";
+      var options: any = {
+        server: this.minecraft_server.value
       }
       this.widget.refreshTime = this.refreshTime;
       this.widget.options = JSON.stringify(options);
