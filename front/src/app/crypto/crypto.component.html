@@ -1,0 +1,18 @@
+<div class="card"> <div class="icon"><img src="{{widget.data.logo_url}}"></div><div class="header">
+  <div class="image"> <img src="https://actufinance.fr/wp-content/uploads/2018/03/crypto-monnaies-696x465.jpg" alt="" /> </div>
+  <div (click)="openModal(widget)" class="close-container" >
+    <div class="leftright"></div>
+    <div class="rightleft"></div>
+  </div>
+  <ul class="liste">
+    <li><a (click)="update(widget)"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+  </ul>
+  </div><br>
+  <h2>{{widget.data.name}}</h2>
+  <h4>Price : {{widget.data.price}}$</h4>
+  <h4>Rank : {{widget.data.rank}}</h4>
+  <h4>Highter Price : {{widget.data.high}}$</h4>
+  <h4>Symbol : {{widget.data.symbol}}</h4>
+
+  <h5></h5>
+</div>

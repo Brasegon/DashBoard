@@ -38,6 +38,8 @@ export class AddWidgetComponent implements OnInit {
 
   minecraft_server = new FormControl('');
 
+  crypto = new FormControl('');
+
 
   widgetGroup: WidgetGroup[] = [
     {
@@ -60,6 +62,12 @@ export class AddWidgetComponent implements OnInit {
       name: "Minecraft Service",
       widget: [
         {value: "Minecraft"}
+      ]
+    },
+    {
+      name: "Crypto Service",
+      widget: [
+        {value: "Crypto"}
       ]
     }
   ]
@@ -113,6 +121,17 @@ export class AddWidgetComponent implements OnInit {
       this.widget.widget = "outlook";
       var options: any = {
         auth: this.microsoftToken
+      }
+      this.widget.options = JSON.stringify(options);
+      this.widget.refreshTime = this.refreshTime;
+      var result = await this.auth.addWidget(this.widget).toPromise();
+      this.dialogRef.close(result);
+    }
+
+    if (this.widget.type === "Crypto") {
+      this.widget.widget = "crypto";
+      var options: any = {
+        money: this.crypto.value
       }
       this.widget.options = JSON.stringify(options);
       this.widget.refreshTime = this.refreshTime;

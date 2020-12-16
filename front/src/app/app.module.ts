@@ -29,6 +29,7 @@ import { MsalModule } from '@azure/msal-angular';
 import { OutlookComponent } from './outlook/outlook.component';
 import { UpdateWidgetComponent } from './widget/update-widget/update-widget.component';
 import { MinecraftComponent } from './minecraft/minecraft.component';
+import { CryptoComponent } from './crypto/crypto.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { MinecraftComponent } from './minecraft/minecraft.component';
     EpitechProfilComponent,
     OutlookComponent,
     UpdateWidgetComponent,
-    MinecraftComponent
+    MinecraftComponent,
+    CryptoComponent
   ],
   imports: [
     BrowserModule,
