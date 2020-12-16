@@ -13,6 +13,9 @@
                <app-weather *ngIf="widget.type === 'Weather'" [widget]='widget'></app-weather>
                <app-epitech-profil *ngIf="widget.nameType === 'epitech_user'" [widget]='widget'></app-epitech-profil>
                <app-outlook *ngIf="widget.nameType === 'outlook'" [widget]='widget'></app-outlook>
+               <app-minecraft *ngIf="widget.nameType === 'minecraft_server'" [widget]='widget'></app-minecraft>
+
+               
               <app-asteroid></app-asteroid>
            </div>
          </div>
