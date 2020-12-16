@@ -7,6 +7,7 @@ import fr.brangers.dashboard.service.Data;
 import fr.brangers.dashboard.service.Service;
 import fr.brangers.dashboard.service.service.widget.widgetType.epitech.Epitech;
 import fr.brangers.dashboard.service.service.widget.widgetType.microsoft.Outlook;
+import fr.brangers.dashboard.service.service.widget.widgetType.minecraft.MinecraftWidget;
 import fr.brangers.dashboard.service.service.widget.widgetType.weather.WeatherTemperature;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -48,6 +49,9 @@ public class GetWidgets extends Service {
                 break;
             case "outlook":
                 array.put(new Outlook(rs.getInt("id"), "Outlook", "outlook", rs.getString("options"), rs.getInt("refreshTime")));
+                break;
+            case "minecraft":
+                array.put(new MinecraftWidget(rs.getInt("id"), "Minecraft", "minecraft", rs.getInt("refreshTime"), rs.getString("options")));
         }
     }
 }

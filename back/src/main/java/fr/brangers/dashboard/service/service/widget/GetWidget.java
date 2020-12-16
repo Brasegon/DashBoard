@@ -6,6 +6,7 @@ import fr.brangers.dashboard.service.Service;
 import fr.brangers.dashboard.service.service.widget.widgetType.WidgetType;
 import fr.brangers.dashboard.service.service.widget.widgetType.epitech.Epitech;
 import fr.brangers.dashboard.service.service.widget.widgetType.microsoft.Outlook;
+import fr.brangers.dashboard.service.service.widget.widgetType.minecraft.MinecraftWidget;
 import fr.brangers.dashboard.service.service.widget.widgetType.weather.WeatherTemperature;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -50,6 +51,9 @@ public class GetWidget extends Service {
                 widget = new Epitech(rs.getInt("id"), "EpitechProfil", "epitech_user", rs.getString("options"), rs.getInt("refreshTime"));
             case "outlook":
                 widget = new Outlook(rs.getInt("id"), "Outlook", "outlook", rs.getString("options"), rs.getInt("refreshTime"));
+                break;
+            case "minecraft":
+                widget = new MinecraftWidget(rs.getInt("id"), "Minecraft", "minecraft", rs.getInt("refreshTime"), rs.getString("options"));
         }
     }
 }
