@@ -4,8 +4,11 @@
       <div class="leftright"></div>
       <div class="rightleft"></div>
     </div>
+    <ul>
+      <li><a (click)="update(widget)"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+    </ul>
    <div class="weatherIcon">    <img src="{{widget.data.condition.icon}}"></div>
-    <div class="weatherInfo" (click)="update(widget)">
+    <div class="weatherInfo">
       <div class="temperature"><span>{{widget.data.temp}}&deg;</span></div>
       <div class="description">
         <div class="weatherCondition">{{widget.data.condition.text}}</div>

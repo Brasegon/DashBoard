@@ -10,7 +10,10 @@
           <div class="leftright"></div>
           <div class="rightleft"></div>
         </div>
-          <div class="text-center card-box" (click)="update(widget)">
+        <ul class="liste">
+          <li><a (click)="update(widget)"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+        </ul>
+          <div class="text-center card-box">
               <div *ngIf="widget.data.error == false" class="member-card pt-2 pb-2">
                   <div class="thumb-lg member-thumb mx-auto"><img src="{{widget.data.picture}}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
                   <div class="">
