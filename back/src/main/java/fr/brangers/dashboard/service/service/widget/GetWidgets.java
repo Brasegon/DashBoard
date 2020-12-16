@@ -5,6 +5,7 @@ import fr.brangers.dashboard.message.IResponse;
 import fr.brangers.dashboard.message.Response;
 import fr.brangers.dashboard.service.Data;
 import fr.brangers.dashboard.service.Service;
+import fr.brangers.dashboard.service.service.widget.widgetType.crypto.Cryptowidget;
 import fr.brangers.dashboard.service.service.widget.widgetType.epitech.Epitech;
 import fr.brangers.dashboard.service.service.widget.widgetType.microsoft.Outlook;
 import fr.brangers.dashboard.service.service.widget.widgetType.minecraft.MinecraftWidget;
@@ -52,6 +53,10 @@ public class GetWidgets extends Service {
                 break;
             case "minecraft_server":
                 array.put(new MinecraftWidget(rs.getInt("id"), "Minecraft", "minecraft_server", rs.getInt("refreshTime"), rs.getString("options")));
+                break;
+            case "crypto":
+                array.put(new Cryptowidget(rs.getInt("id"), "Crypto", "crypto", rs.getInt("refreshTime"), rs.getString("options")));
+                break;
         }
     }
 }
