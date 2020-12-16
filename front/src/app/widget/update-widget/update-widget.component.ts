@@ -38,6 +38,8 @@ export class UpdateWidgetComponent implements OnInit {
   }
 
   epitech_user = new FormControl('');
+  minecraft_server = new FormControl('');
+
 
   widgetGroup: WidgetGroup[] = [
     {
@@ -55,13 +57,13 @@ export class UpdateWidgetComponent implements OnInit {
       widget: [
         {value: "Outlook"}
       ]
+    }, {
+      name: "Minecraft Service",
+      widget: [
+        {value: "Minecraft"}
+      ]
     }
   ]
-
-  widgets =  [
-    {value: 'Weather'},
-    {value: 'EpitechProfil'}
-  ];
 
   microsoftToken = "";
 
@@ -80,12 +82,16 @@ export class UpdateWidgetComponent implements OnInit {
       var options = JSON.parse(this.data.options);
       this.microsoftToken = options.auth;
     }
+    if (this.widget.type === "Minecraft") {
+      var options = JSON.parse(this.data.options);
+      this.minecraft_server = new FormControl(options.server);
+    }
   }
 
   changeRefreshTime(event) {
     console.log(event.value);
     this.refreshTime = event.value;
-  
+
   }
 
   async addWidget() {

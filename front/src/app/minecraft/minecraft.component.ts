@@ -32,4 +32,7 @@ export class MinecraftComponent implements OnInit {
     })
   }
 
+  isOnline() {
+    return this.widget.data.online;
+  }
 }

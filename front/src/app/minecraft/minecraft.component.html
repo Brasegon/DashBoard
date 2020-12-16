@@ -1,1 +1,15 @@
-<h1 style="color : white;">minecraft works!</h1>
+<div class="card"> <div class="icon"><img src="{{widget.data.icon}}"></div><div class="header">
+  <div class="image"> <img src="https://res.cloudinary.com/lmn/image/upload/e_sharpen:100/f_auto,fl_lossy,q_auto/v1/gameskinnyc/u/n/t/untitled-a5150.jpg" alt="" /> </div>
+  <div (click)="openModal(widget)" class="close-container" >
+    <div class="leftright"></div>
+    <div class="rightleft"></div>
+  </div>
+  <ul class="liste">
+    <li><a (click)="update(widget)"><i class="fa fa-cog" aria-hidden="true"></i></a></li>
+  </ul>
+  <h2>{{widget.data.hostname}}</h2>
+  </div><br>
+  <h4>Players : {{widget.data.players.online}} / {{widget.data.players.max}}</h4>
+  <h5>Version : {{widget.data.version}}</h5>
+  <h5>Ip : {{widget.data.ip}}</h5>
+</div>
