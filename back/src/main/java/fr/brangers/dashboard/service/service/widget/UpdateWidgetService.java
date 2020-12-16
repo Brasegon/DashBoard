@@ -22,12 +22,13 @@ public class UpdateWidgetService extends Service {
     @Override
     public IResponse launch() {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE widget SET type = ?, widget_type = ?, options = ? WHERE user_id = ? AND id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE widget SET type = ?, widget_type = ?, options = ?, refreshTime = ? WHERE user_id = ? AND id = ?");
             preparedStatement.setString(1, widget.getType());
             preparedStatement.setString(2, widget.getWidget());
             preparedStatement.setString(3, widget.getOptions());
-            preparedStatement.setInt(4, json.getInt("id"));
-            preparedStatement.setInt(5, widget.getId());
+            preparedStatement.setInt(4, widget.getRefreshTime());
+            preparedStatement.setInt(5, json.getInt("id"));
+            preparedStatement.setInt(6, widget.getId());
             preparedStatement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

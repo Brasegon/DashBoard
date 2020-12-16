@@ -10,8 +10,8 @@
           <div class="leftright"></div>
           <div class="rightleft"></div>
         </div>
-          <div class="text-center card-box">
-              <div class="member-card pt-2 pb-2">
+          <div class="text-center card-box" (click)="update(widget)">
+              <div *ngIf="widget.data.error == false" class="member-card pt-2 pb-2">
                   <div class="thumb-lg member-thumb mx-auto"><img src="{{widget.data.picture}}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
                   <div class="">
                       <h4>{{widget.data.name}}</h4>
@@ -34,6 +34,9 @@
                           </div>
                       </div>
                   </div>
+              </div>
+              <div *ngIf="widget.data.error == true" class="member-card pt-2 pb-2">
+                  <h1>Epitech auth is not correct</h1>
               </div>
           </div>
 

@@ -1,0 +1,40 @@
+<h1 mat-dialog-title style="color : white">Add a Widget</h1>
+
+<mat-dialog-content>
+
+    <mat-form-field appearance="fill">
+      <mat-label style="color : white">Widget</mat-label>
+      <mat-select [(value)]="widget.type">
+        <mat-optgroup *ngFor="let group of widgetGroup" [label]="group.name">
+          <mat-option *ngFor="let widget of group.widget" [value]="widget.value" >
+            {{widget.value}}
+          </mat-option>
+      </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="widget.type === 'Weather'" >
+        <mat-form-field class="example-full-width">
+            <mat-label style="color : white">City</mat-label>
+            <input [formControl]="weather.city" matInput placeholder="Ex. Marseille">
+          </mat-form-field>
+    </div>
+    <div *ngIf="widget.type === 'EpitechProfil'" >
+      <mat-form-field class="example-full-width" >
+          <mat-label style="color : white">Epitech Autologin</mat-label>
+          <input [formControl]="epitech_user" matInput placeholder="Ex. auth-xxx">
+        </mat-form-field>
+
+  </div>
+  <div *ngIf="widget.type === 'Outlook'" >
+    <button (click)="connectMicrosoft()">Connect to microsoft</button>
+</div>
+  <div>
+    <mat-slider [(value)]="refreshTime" min="5" max="60" step="1" value="5" (change)="changeRefreshTime($event)" [thumbLabel]="refreshTime"></mat-slider>
+  </div>
+  <a (click)="addWidget()" style="cursor: pointer; color: white">Submit</a>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+</mat-dialog-actions>

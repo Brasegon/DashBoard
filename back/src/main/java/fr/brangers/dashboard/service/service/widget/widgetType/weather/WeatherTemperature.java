@@ -13,7 +13,7 @@ public class WeatherTemperature extends WidgetType {
     JSONObject weatherInformations = new JSONObject();
 
     public WeatherTemperature(int id, String type, String nameType, String options, int refreshTime) {
-        super(id, type, nameType, refreshTime);
+        super(id, type, nameType, refreshTime, options);
         findWeatherWithOptions(options);
     }
 

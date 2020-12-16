@@ -4,7 +4,7 @@
       <div class="leftright"></div>
       <div class="rightleft"></div>
     </div>
-    <div class="title">My mails</div>
+    <div (click)="update(widget)" class="title">My mails</div>
 
     <li *ngFor="let i of widget.data.value" class="event" [attr.data-date] = "getTime(i)">
       <div class="member-infos">

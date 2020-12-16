@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from 'src/app/api/auth.service';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BroadcastService, MsalService } from '@azure/msal-angular';
-
+import { AuthService } from 'src/app/api/auth.service';
+import { AddWidgetComponent } from '../add-widget/add-widget.component';
 
 interface Widget {
   value: string;
@@ -14,21 +14,24 @@ interface WidgetGroup {
   name: string;
   widget: Widget[];
 }
+
 @Component({
-  selector: 'app-add-widget',
-  templateUrl: './add-widget.component.html',
-  styleUrls: ['./add-widget.component.css']
+  selector: 'app-update-widget',
+  templateUrl: './update-widget.component.html',
+  styleUrls: ['./update-widget.component.css']
 })
-export class AddWidgetComponent implements OnInit {
-  constructor(private auth : AuthService, public dialogRef: MatDialogRef<AddWidgetComponent>, private authService: MsalService, private broadcastService: BroadcastService) { }
+export class UpdateWidgetComponent implements OnInit {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private auth : AuthService, public dialogRef: MatDialogRef<AddWidgetComponent>, private authService: MsalService, private broadcastService: BroadcastService) { }
+
 
   widgetSelected = 'Weather'
-  refreshTime = 5;
+  refreshTime = this.data.refreshTime;
   widget = {
-    type : "",
-    widget: "",
-    refreshTime: 5,
+    type : this.data.type,
+    widget: this.data.nameType,
+    refreshTime: this.data.refreshTime,
     options: "",
+    id: this.data.id
   }
   weather = {
     city: new FormControl('')
@@ -63,12 +66,26 @@ export class AddWidgetComponent implements OnInit {
   microsoftToken = "";
 
   ngOnInit(): void {
+    console.log(this.data);
+    if (this.widget.type === "Weather") {
+      var options = JSON.parse(this.data.options);
+      this.weather.city = new FormControl(options.city);
+    }
 
+    if (this.widget.type === "EpitechProfil") {
+      var options = JSON.parse(this.data.options);
+      this.epitech_user = new FormControl(options.auth);
+    }
+    if (this.widget.type === "Outlook") {
+      var options = JSON.parse(this.data.options);
+      this.microsoftToken = options.auth;
+    }
   }
 
   changeRefreshTime(event) {
     console.log(event.value);
     this.refreshTime = event.value;
+  
   }
 
   async addWidget() {
@@ -79,8 +96,6 @@ export class AddWidgetComponent implements OnInit {
       }
       this.widget.refreshTime = this.refreshTime;
       this.widget.options = JSON.stringify(options);
-      var result = await this.auth.addWidget(this.widget).toPromise();
-      this.dialogRef.close(result);
     }
 
     if (this.widget.type === "EpitechProfil") {
@@ -90,8 +105,6 @@ export class AddWidgetComponent implements OnInit {
       }
       this.widget.options = JSON.stringify(options);
       this.widget.refreshTime = this.refreshTime;
-      var result = await this.auth.addWidget(this.widget).toPromise();
-      this.dialogRef.close(result);
     }
 
     if (this.widget.type === "Outlook") {
@@ -101,9 +114,9 @@ export class AddWidgetComponent implements OnInit {
       }
       this.widget.options = JSON.stringify(options);
       this.widget.refreshTime = this.refreshTime;
-      var result = await this.auth.addWidget(this.widget).toPromise();
-      this.dialogRef.close(result);
     }
+    var result = await this.auth.updateWidget(this.widget).toPromise();
+    this.dialogRef.close(result);
   }
   connectMicrosoft(): any {
     const requestObj = {
@@ -120,4 +133,5 @@ export class AddWidgetComponent implements OnInit {
       });
     });
   }
+
 }

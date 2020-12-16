@@ -14,7 +14,7 @@ public class Outlook extends WidgetType {
     JSONObject outlookInformations = new JSONObject();
 
     public Outlook(int id, String type, String nameType, String options, int refreshTime) {
-        super(id, type, nameType, refreshTime);
+        super(id, type, nameType, refreshTime, options);
         findOutlookAuth(options);
     }
 

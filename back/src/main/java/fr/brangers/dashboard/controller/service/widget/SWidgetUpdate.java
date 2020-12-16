@@ -4,6 +4,7 @@ public class SWidgetUpdate {
     private String type;
     private String widget;
     private String options;
+    private int refreshTime;
     private int id;
 
     public String getType() {
@@ -16,6 +17,10 @@ public class SWidgetUpdate {
 
     public String getOptions() {
         return options;
+    }
+
+    public int getRefreshTime() {
+        return refreshTime;
     }
 
     public int getId() {

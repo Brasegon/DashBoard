@@ -3,6 +3,7 @@ import { DelWidgetComponent } from '../widget/del-widget/del-widget.component';
 import * as moment from 'moment';
 import { HomeComponent } from '../home/home.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateWidgetComponent } from '../widget/update-widget/update-widget.component';
 
 
 
@@ -33,5 +34,13 @@ export class OutlookComponent implements OnInit {
     })
   }
 
+  update(widget: any) {
+    let dialogRef = this.dialog.open(UpdateWidgetComponent, {data: widget, panelClass: 'mybody'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.home.getWidget();
+    })
+  }
+  
 
 }

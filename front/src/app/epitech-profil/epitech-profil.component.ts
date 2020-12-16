@@ -4,6 +4,7 @@ import { DelWidgetComponent } from '../widget/del-widget/del-widget.component';
 import { HomeComponent } from '../home/home.component';
 import { AuthService } from '../api/auth.service';
 import { MsalService, BroadcastService  } from '@azure/msal-angular';
+import { UpdateWidgetComponent } from '../widget/update-widget/update-widget.component';
 
 @Component({
   selector: 'app-epitech-profil',
@@ -37,6 +38,14 @@ export class EpitechProfilComponent implements OnInit {
   
   
     let dialogRef = this.dialog.open(DelWidgetComponent, {data: widget, panelClass: 'mybody'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.home.getWidget();
+    })
+  }
+
+  update(widget: any) {
+    let dialogRef = this.dialog.open(UpdateWidgetComponent, {data: widget, panelClass: 'mybody'});
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       this.home.getWidget();

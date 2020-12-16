@@ -14,7 +14,7 @@ public class Epitech extends WidgetType {
     JSONObject epitechInformations = new JSONObject();
 
     public Epitech(int id, String type, String nameType, String options, int refreshTime) {
-        super(id, type, nameType, refreshTime);
+        super(id, type, nameType, refreshTime, options);
         findEpitechInformations(options);
     }
 
@@ -46,15 +46,10 @@ public class Epitech extends WidgetType {
             epitechInformations.put("gpa", inf.get("gpa"));
             epitechInformations.put("internal_email", inf.get("internal_email"));
             epitechInformations.put("picture", "https://intra.epitech.eu/" + auth + inf.get("picture"));
+            epitechInformations.put("error", false);
             this.data = epitechInformations.toMap();
         } catch (Exception e) {
-            epitechInformations.put("name", "undefined");
-            epitechInformations.put("promo", "undefined");
-            epitechInformations.put("credits", "0");
-            epitechInformations.put("school_title", "0");
-            epitechInformations.put("gpa", "0");
-            epitechInformations.put("internal_email", "0");
-            epitechInformations.put("picture", "null");
+            epitechInformations.put("error", true);
             this.data = epitechInformations.toMap();
         }
     }

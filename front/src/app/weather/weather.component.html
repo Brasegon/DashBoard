@@ -5,7 +5,7 @@
       <div class="rightleft"></div>
     </div>
    <div class="weatherIcon">    <img src="{{widget.data.condition.icon}}"></div>
-    <div class="weatherInfo">
+    <div class="weatherInfo" (click)="update(widget)">
       <div class="temperature"><span>{{widget.data.temp}}&deg;</span></div>
       <div class="description">
         <div class="weatherCondition">{{widget.data.condition.text}}</div>

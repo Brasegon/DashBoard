@@ -10,14 +10,16 @@ public abstract class WidgetType {
     protected String nameType;
     protected int id;
     protected int refreshTime;
+    protected String options;
     protected Map<String, Object> data;
 
-    protected WidgetType(int id, String type, String nameType, int refreshTime) {
+    protected WidgetType(int id, String type, String nameType, int refreshTime, String options) {
         this.type = type;
         this.id = id;
         this.nameType = nameType;
         this.data = new HashMap<>();
         this.refreshTime = refreshTime;
+        this.options = options;
     }
 
     public int getRefreshTime() {
@@ -38,5 +40,9 @@ public abstract class WidgetType {
 
     public int getId() {
         return id;
+    }
+
+    public String getOptions() {
+        return options;
     }
 }

@@ -41,13 +41,13 @@ public class GetWidgets extends Service {
     private void getWidgetInformation(ResultSet rs) throws SQLException {
         switch (rs.getString("widget_type")) {
             case "weather_temperature":
-                array.put(new WeatherTemperature(rs.getInt("id"), "weather", "température", rs.getString("options"), rs.getInt("refreshTime")));
+                array.put(new WeatherTemperature(rs.getInt("id"), "Weather", "température", rs.getString("options"), rs.getInt("refreshTime")));
                 break;
             case "epitech_user":
-                array.put(new Epitech(rs.getInt("id"), "epitech", "epitech_user", rs.getString("options"), rs.getInt("refreshTime")));
+                array.put(new Epitech(rs.getInt("id"), "EpitechProfil", "epitech_user", rs.getString("options"), rs.getInt("refreshTime")));
                 break;
             case "outlook":
-                array.put(new Outlook(rs.getInt("id"), "microsoft", "outlook", rs.getString("options"), rs.getInt("refreshTime")));
+                array.put(new Outlook(rs.getInt("id"), "Outlook", "outlook", rs.getString("options"), rs.getInt("refreshTime")));
         }
     }
 }

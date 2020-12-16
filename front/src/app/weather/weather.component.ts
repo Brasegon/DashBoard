@@ -5,6 +5,8 @@ import { callbackify } from 'util';
 import { AuthService } from '../api/auth.service';
 import { HomeComponent } from '../home/home.component';
 import { DelWidgetComponent } from '../widget/del-widget/del-widget.component';
+import { UpdateWidgetComponent } from '../widget/update-widget/update-widget.component';
+
 
 @Component({
   selector: 'app-weather',
@@ -33,6 +35,14 @@ export class WeatherComponent implements OnInit {
   }
   openModal(widget: any) {
     let dialogRef = this.dialog.open(DelWidgetComponent, {data: widget, panelClass: 'mybody'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.home.getWidget();
+    })
+  }
+
+  update(widget: any) {
+    let dialogRef = this.dialog.open(UpdateWidgetComponent, {data: widget, panelClass: 'mybody'});
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       this.home.getWidget();
