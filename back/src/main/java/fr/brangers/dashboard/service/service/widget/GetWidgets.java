@@ -51,7 +51,7 @@ public class GetWidgets extends Service {
                 array.put(new Outlook(rs.getInt("id"), "Outlook", "outlook", rs.getString("options"), rs.getInt("refreshTime")));
                 break;
             case "minecraft_server":
-                array.put(new MinecraftWidget(rs.getInt("id"), "Minecraft", "minecraft", rs.getInt("refreshTime"), rs.getString("options")));
+                array.put(new MinecraftWidget(rs.getInt("id"), "Minecraft", "minecraft_server", rs.getInt("refreshTime"), rs.getString("options")));
         }
     }
 }
