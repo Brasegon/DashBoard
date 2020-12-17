@@ -7,6 +7,19 @@
 * JAVA Jdk 15
 * NodeJS
 
+## List of availaible widget :
+- [x] __Weather Service__
+  - [x] Weather Widget
+- [x] __Epitech Service__
+  - [x] Intra Epitech Widget
+- [x] __Minecraft Service__
+  - [x] Minecraft Server Widget
+- [x] __Microsoft Service__
+  - [x] Outlook Widget
+- [x] __Crypto Money Service__
+  - [x] Crypto Price Widget
+
+
 # API
 
 ## Installation
@@ -58,8 +71,10 @@ public class ExempleWidget extends WidgetType {
 case "exemple NameType Widget":
     array.put(new ExampleWidget(rs.getInt("id"), rs.getString("type"), rs.getString("widget_type"), rs.getInt("refreshTime"), rs.getString("options")));
     break;
-      ```
-     
- 
-    
-  
+ ```
+* In GetWidget.java, add the following lines :
+```java
+case "exemple NameType Widget":
+    widget = new ExampleWidget(rs.getInt("id"), rs.getString("type"), rs.getString("widget_type"), rs.getInt("refreshTime"), rs.getString("options"));
+    break;
+ ```
