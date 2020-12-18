@@ -39,7 +39,9 @@ export class UpdateWidgetComponent implements OnInit {
 
   epitech_user = new FormControl('');
   minecraft_server = new FormControl('');
+  crypto = new FormControl('');
 
+  satellite_id = new FormControl('');
 
   widgetGroup: WidgetGroup[] = [
     {
@@ -61,6 +63,18 @@ export class UpdateWidgetComponent implements OnInit {
       name: "Minecraft Service",
       widget: [
         {value: "Minecraft"}
+      ]
+    },
+    {
+      name: "Crypto Service",
+      widget: [
+        {value: "Crypto"}
+      ]
+    },
+    {
+      name: "Satellite Service",
+      widget: [
+        {value: "Satellite"}
       ]
     }
   ]
@@ -85,6 +99,14 @@ export class UpdateWidgetComponent implements OnInit {
     if (this.widget.type === "Minecraft") {
       var options = JSON.parse(this.data.options);
       this.minecraft_server = new FormControl(options.server);
+    }
+    if (this.widget.type === "Crypto") {
+      var options = JSON.parse(this.data.options);
+      this.crypto = new FormControl(options.money);
+    }
+    if (this.widget.type === "Satellite") {
+      var options = JSON.parse(this.data.options);
+      this.satellite_id = new FormControl(options.id);
     }
   }
 
@@ -121,6 +143,24 @@ export class UpdateWidgetComponent implements OnInit {
       this.widget.options = JSON.stringify(options);
       this.widget.refreshTime = this.refreshTime;
     }
+    if (this.widget.type === "Crypto") {
+      this.widget.widget = "crypto";
+      var options: any = {
+        money: this.crypto.value
+      }
+      this.widget.options = JSON.stringify(options);
+      this.widget.refreshTime = this.refreshTime;
+    }
+
+    if (this.widget.type === "Satellite") {
+      this.widget.widget = "satellite";
+      var options: any = {
+        id: this.satellite_id.value
+      }
+      this.widget.options = JSON.stringify(options);
+      this.widget.refreshTime = this.refreshTime;
+    }
+
     var result = await this.auth.updateWidget(this.widget).toPromise();
     this.dialogRef.close(result);
   }

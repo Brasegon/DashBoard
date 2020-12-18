@@ -22,8 +22,6 @@ p {
 	width: 350px;
 	max-width: 100%;
   text-align: center;
-  margin-top: 5%;
-  margin-left: 16%;
 }
 
 @media (max-width: 450px)
@@ -42,13 +40,6 @@ p {
   }
 }
 
-@media (max-height: 800px)
-{
-  .card-container
-  {
-    margin-top: 40%;
-  }
-}
 
 
 .card-container .pro {

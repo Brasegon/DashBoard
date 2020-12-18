@@ -36,7 +36,21 @@
       <input [formControl]="minecraft_server" matInput placeholder="Ex. 127.0.0.1">
     </mat-form-field>
 </div>
+<div *ngIf="widget.type === 'Crypto'" >
+  <mat-form-field class="example-full-width" >
+      <mat-label style="color : white">Crypto</mat-label>
+      <input [formControl]="crypto" matInput placeholder="Ex. Btc">
+    </mat-form-field>
 
+</div>
+
+<div *ngIf="widget.type === 'Satellite'" >
+  <mat-form-field class="example-full-width" >
+      <mat-label style="color : white">Satellite</mat-label>
+      <input [formControl]="satellite_id" matInput placeholder="Ex. 25544">
+    </mat-form-field>
+
+</div>
 
   <div>
     <mat-slider [(value)]="refreshTime" min="5" max="60" step="1" value="5" (change)="changeRefreshTime($event)" [thumbLabel]="refreshTime"></mat-slider>
