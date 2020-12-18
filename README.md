@@ -1,3 +1,4 @@
+
 # T-JAV-501-MAR-5-1-dashboard-brandon.segers
 [![Build Status](https://travis-ci.com/Brasegon/DashBoard.svg?token=9x6YSMXsF91xTCYR2pby&branch=main)](https://travis-ci.com/Brasegon/DashBoard)
 
@@ -78,3 +79,10 @@ case "exemple NameType Widget":
     widget = new ExampleWidget(rs.getInt("id"), rs.getString("type"), rs.getString("widget_type"), rs.getInt("refreshTime"), rs.getString("options"));
     break;
  ```
+ ### Structure of API
+ * Main Class ---> fr.brangers
+ * Utils Class (ex. JWToken) ---> fr.brangers.utils
+ * Dashboard Class ---> fr.brangers.dashboard
+	 * Controller ---> fr.brangers.dashboard.controller (Contains all of the api request)
+	 * Message ---> fr.brangers.dashboard.message (Contains custom message for request)
+	 * Service ---> fr.brangers.dashboard.service (Contains all widgets execution and login / register execution)
