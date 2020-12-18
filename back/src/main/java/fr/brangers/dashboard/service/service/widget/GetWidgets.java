@@ -5,6 +5,7 @@ import fr.brangers.dashboard.message.IResponse;
 import fr.brangers.dashboard.message.Response;
 import fr.brangers.dashboard.service.Data;
 import fr.brangers.dashboard.service.Service;
+import fr.brangers.dashboard.service.service.widget.widgetType.actinspace.SatelitteWidget;
 import fr.brangers.dashboard.service.service.widget.widgetType.crypto.Cryptowidget;
 import fr.brangers.dashboard.service.service.widget.widgetType.epitech.Epitech;
 import fr.brangers.dashboard.service.service.widget.widgetType.microsoft.Outlook;
@@ -56,6 +57,9 @@ public class GetWidgets extends Service {
                 break;
             case "crypto":
                 array.put(new Cryptowidget(rs.getInt("id"), "Crypto", "crypto", rs.getInt("refreshTime"), rs.getString("options")));
+                break;
+            case "satellite":
+                array.put(new SatelitteWidget(rs.getInt("id"), "Satellite", "satellite", rs.getInt("refreshTime"), rs.getString("options")));
                 break;
         }
     }
