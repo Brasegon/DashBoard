@@ -23,7 +23,7 @@ p {
 	max-width: 100%;
   text-align: center;
   margin-top: 5%;
-
+  margin-left: 16%;
 }
 
 @media (max-width: 450px)
@@ -183,4 +183,118 @@ footer i {
 footer a {
     color: #3c97bf;
     text-decoration: none;
+}
+
+
+.close-container {
+  position: absolute;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  margin-top: 0px;
+  top : -5px;
+  left : 3px;
+  cursor: pointer;
+}
+
+.leftright {
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: #3DB1C8;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft {
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: #3DB1C8;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+label {
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .6em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .3s ease-in;
+  opacity: 0;
+}
+
+.close {
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+
+.close-container:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: #F25C66;
+}
+
+.close-container:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: #F25C66;
+}
+
+.close-container:hover label {
+  opacity: 1;
+}
+
+.liste {
+  margin:0;
+  padding:0;
+  display:flex;
+  position: absolute;
+  top: -2%;
+  left: 81%;
+}
+
+.liste li {
+  list-style:none;
+  margin: 0 15px;
+}
+
+.liste li a {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #666;
+  transition: .5s;
+}
+
+.liste li a:before {
+  content: '';
+  position: absolute;
+  top:0;
+  left:0;
+
+  border-radius:50%;
+  background: #3DB1C8;
+  transition: .5s;
+  transform: scale(.9);
+  z-index: -1;
+}
+
+.liste li a:hover:before {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px #3DB1C8;
+  filter: blur(3px);
+}
+
+.liste li a:hover {
+  color:#3DB1C8;
+  text-shadow: 0 0 5px #3DB1C8;
 }

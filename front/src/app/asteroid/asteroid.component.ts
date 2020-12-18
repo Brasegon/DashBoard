@@ -12,9 +12,26 @@ import { UpdateWidgetComponent } from '../widget/update-widget/update-widget.com
 export class AsteroidComponent implements OnInit {
   @Input() widget: any;
   constructor(private dialog: MatDialog, private home: HomeComponent) { }
-
+  markers: any = [];
+  center = {};
   ngOnInit(): void {
-  }
+      this.center = {
+        lat: this.widget.data.info.lat,
+        lng: this.widget.data.info.lng,
+      }
+
+      this.markers = [{
+        position: {
+          lat: this.widget.data.info.lat,
+          lng: this.widget.data.info.lng,
+        },
+        label: {
+          color: 'red',
+          text: this.widget.data.name,
+        },
+        options: { animation: google.maps.Animation.BOUNCE },
+      }];
+    }
 
   openModal(widget: any) {
     let dialogRef = this.dialog.open(DelWidgetComponent, {data: widget, panelClass: 'mybody'});

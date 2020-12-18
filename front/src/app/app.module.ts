@@ -30,6 +30,7 @@ import { OutlookComponent } from './outlook/outlook.component';
 import { UpdateWidgetComponent } from './widget/update-widget/update-widget.component';
 import { MinecraftComponent } from './minecraft/minecraft.component';
 import { CryptoComponent } from './crypto/crypto.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { CryptoComponent } from './crypto/crypto.component';
     MatSelectModule,
     MatInputModule,
     MatSliderModule,
+    GoogleMapsModule,
     MsalModule.forRoot({
       auth: {
           clientId: "0861f80f-da9a-45b7-9541-d7891117bf61",

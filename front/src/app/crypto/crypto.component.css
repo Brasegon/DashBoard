@@ -24,7 +24,7 @@ h5 {
           animation: fadein 2s;
   overflow:hidden;
   z-index: 999;
-  top : 15%;
+  top : 5%;
 }
 
 .header {

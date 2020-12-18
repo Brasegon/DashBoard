@@ -146,19 +146,17 @@ export class AddWidgetComponent implements OnInit {
       var result = await this.auth.addWidget(this.widget).toPromise();
       this.dialogRef.close(result);
     }
-  }
 
-
-  if (this.widget.type === "Satellite") {
-    this.widget.widget = "satellite";
-    var options: any = {
-      id: this.satellite_id.value
+    if (this.widget.type === "Satellite") {
+      this.widget.widget = "satellite";
+      var options: any = {
+        id: this.satellite_id.value
+      }
+      this.widget.options = JSON.stringify(options);
+      this.widget.refreshTime = this.refreshTime;
+      var result = await this.auth.addWidget(this.widget).toPromise();
+      this.dialogRef.close(result);
     }
-    this.widget.options = JSON.stringify(options);
-    this.widget.refreshTime = this.refreshTime;
-    var result = await this.auth.addWidget(this.widget).toPromise();
-    this.dialogRef.close(result);
-  }
 }
   connectMicrosoft(): any {
     const requestObj = {
