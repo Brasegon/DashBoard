@@ -41,6 +41,14 @@
     </mat-form-field>
 
 </div>
+
+<div *ngIf="widget.type === 'Satellite'" >
+  <mat-form-field class="example-full-width" >
+      <mat-label style="color : white">Satellite</mat-label>
+      <input [formControl]="crypto" matInput placeholder="Ex. 25544">
+    </mat-form-field>
+
+</div>
   <div *ngIf="widget.type === 'Outlook'" >
     <button (click)="connectMicrosoft()">Connect to microsoft</button>
 </div>

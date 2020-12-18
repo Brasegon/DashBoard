@@ -40,6 +40,8 @@ export class AddWidgetComponent implements OnInit {
 
   crypto = new FormControl('');
 
+  satellite_id = new FormControl('');
+
 
   widgetGroup: WidgetGroup[] = [
     {
@@ -68,6 +70,12 @@ export class AddWidgetComponent implements OnInit {
       name: "Crypto Service",
       widget: [
         {value: "Crypto"}
+      ]
+    },
+    {
+      name: "Satellite Service",
+      widget: [
+        {value: "Satellite"}
       ]
     }
   ]
@@ -139,6 +147,19 @@ export class AddWidgetComponent implements OnInit {
       this.dialogRef.close(result);
     }
   }
+
+
+  if (this.widget.type === "Satellite") {
+    this.widget.widget = "satellite";
+    var options: any = {
+      id: this.satellite_id.value
+    }
+    this.widget.options = JSON.stringify(options);
+    this.widget.refreshTime = this.refreshTime;
+    var result = await this.auth.addWidget(this.widget).toPromise();
+    this.dialogRef.close(result);
+  }
+}
   connectMicrosoft(): any {
     const requestObj = {
       scopes: ["user.read", "Mail.Read"]
