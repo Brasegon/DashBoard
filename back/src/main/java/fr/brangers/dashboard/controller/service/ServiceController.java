@@ -17,6 +17,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+
 @RestController
 @ResponseBody
 public class ServiceController {
@@ -98,5 +101,11 @@ public class ServiceController {
         }
         GetWidget serviceList = new GetWidget(object, id);
         return ResponseEntity.status(200).body(serviceList.launch());
+    }
+
+    @GetMapping(value = "/about.json")
+    public ResponseEntity<?> getWidget(HttpServletRequest request) {
+        JSONObject about = new JSONObject("{\"client\":{\"host\":\"" + request.getRemoteAddr() + "\"},\"server\":{\"current_time\":"+ new Date().getTime() + ",\"services\":[{\"name\":\"weather\",\"widgets\":[{\"name\":\"city_temperature \",\"description\":\" Display temperature for a city \",\"params\":[{\"name\":\"city\",\"type\":\"string\"}]}]},{\"name\":\"Minecraft\",\"widgets\":[{\"name\":\"minecraft_server\",\"description \":\" Displaying the current server\",\"params\":[{\"name\":\"ip\",\"type\":\" string \"}]}]},{\"name\":\"Epitech\",\"widgets\":[{\"name\":\"intra epitech\",\"description \":\" Displaying the current profil epitech\",\"params\":[{\"name\":\"auth\",\"type\":\"string\"}]}]},{\"name\":\"Microsoft\",\"widgets\":[{\"name\":\"outlook\",\"description \":\" Displaying the last 3 emails\",\"params\":[{\"name\":\"token\",\"type\":\"string\"}]}]},{\"name\":\"Crypto\",\"widgets\":[{\"name\":\"crypto\",\"description \":\" Displaying the money of crypto\",\"params\":[{\"name\":\"money\",\"type\":\"string\"}]}]},{\"name\":\"Brangers\",\"widgets\":[{\"name\":\"actinspace\",\"description \":\" Displaying the current position of satellite\",\"params\":[{\"name\":\"id\",\"type\":\"string\"}]}]}]}}");
+        return ResponseEntity.status(200).body(about.toMap());
     }
 }
